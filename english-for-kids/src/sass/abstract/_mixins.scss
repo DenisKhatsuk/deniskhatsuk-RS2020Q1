@@ -11,3 +11,9 @@
   -o-transform: $type;
   transform: $type;
 }
+
+@mixin shadow($shadow, $opacity, $shadow2, $opacity2) {
+  -webkit-box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+  -moz-box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+  box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+}

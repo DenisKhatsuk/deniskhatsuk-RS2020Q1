@@ -1,0 +1,60 @@
+.card {
+  width: 30%;
+  margin-bottom: 40px;
+  cursor: pointer;
+  @include transition(0.2s, ease-in-out);
+
+  &:hover {
+    @include shadow(0 8px 17px 0, 0.2, 0 6px 20px 0, 0.19);
+  }
+}
+
+.card-body {
+  position: relative;
+}
+
+.card-btn {
+  position: absolute;
+  right: 10px;
+  top: -35px;
+  background-color: $color-primary;
+}
+
+.card-title {
+  position: relative;
+  padding-top: 17px;
+  text-align: center;
+}
+
+.btn-floating {
+  z-index: 1;
+  display: inline-block;
+  padding: 0;
+  margin: 10px;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  @include shadow(0 5px 11px 0, 0.18, 0 4px 15px 0, 0.15);
+  @include transition(0.2s, ease-in-out);
+  width: 47px;
+  height: 47px;
+
+  i {
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 47px;
+  }
+
+  &:hover {
+    @include shadow(0 8px 17px 0, 0.2, 0 6px 20px 0, 0.19);
+  }
+
+  &:before {
+    border-radius: 0
+  }
+
+}
