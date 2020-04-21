@@ -1,8 +1,13 @@
 .menu {
   position: relative;
   top: 150px;
+  margin-left: 22px;
+  text-align: left;
+  font-size: 22px;
+  color: $color-primary;
 }
 
 .menu__item {
   list-style: none;
+  padding-bottom: 15px;
 }

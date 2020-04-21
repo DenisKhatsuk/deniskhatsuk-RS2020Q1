@@ -29,12 +29,14 @@ export default class Cards {
       cards += card;
     });
     this.output.innerHTML = cards;
+    this.output.classList.add('categories');
   }
 
   _displayCategoriesInMenu(menuParentClass) {
     const menuParent = document.querySelector(`.${menuParentClass}`);
     let menu = document.createElement('ul');
     menu.classList.add('menu');
+    menu.innerHTML = '<li class="menu__item">Категории</li>';
     let menuItem;
     this.categories.forEach((category)=>{
       menuItem = `<li class="menu__item">${category}</li>`;
@@ -43,4 +45,7 @@ export default class Cards {
     console.log('Hello');
     menuParent.appendChild(menu);
   }
+
+
+
 }
