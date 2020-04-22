@@ -41,14 +41,20 @@ export default class Cards {
     const menuParent = document.querySelector(`.${menuParentClass}`);
     let menu = document.createElement('ul');
     menu.classList.add('menu');
-    menu.innerHTML = '<li class="menu__item"><a class="menu__link" href="/">Категории</a></li>';
+    menu.innerHTML = '<li class="menu__item"><a class="menu__link menu__link_current" href="/">Категории</a></li>';
     let menuItem;
     let categoryIndex = 1;
     this.categories.forEach((category)=>{
-      menuItem = `<li class="menu__item"><a class="menu__link" href="_#" data-category="category-${categoryIndex}">${category}</a></li>`;
+      menuItem = `<li class="menu__item"><a class="menu__link" href="_#" data-category="${categoryIndex}">${category}</a></li>`;
       menu.innerHTML += menuItem;
     });
     menuParent.appendChild(menu);
+    menuParent.addEventListener('click', (e)=>{
+      if (!e.target.classList.contains('menu__link')) return;
+      let categoryIndex = e.target.getAttribute('data-category');
+      e.preventDefault();
+      this._initializeCategoriesCards(categoryIndex);
+    });
   }
 
   _addCategoriesClickHandler() {
@@ -64,13 +70,17 @@ export default class Cards {
   _addCategoriesCardsClickHandler() {
     const categoryCards = document.querySelector('[class*="category"]');
     categoryCards.addEventListener('click', (e)=>{
+      const currentCard = e.target.closest('.card');
       if (e.target.classList.contains('fas')) {
-        const currentCard = e.target.closest('.card');
+        
         currentCard.classList.add('card__translated');
-        console.log(currentCard);
         currentCard.addEventListener('mouseleave', ()=>{
           currentCard.classList.remove('card__translated');
         });
+      } else {
+        const audioName = currentCard.querySelector('.card-title').textContent;
+        const audioElement = new Audio(`src/audio/${audioName}.mp3`);
+        audioElement.play();
       }
     });
   }

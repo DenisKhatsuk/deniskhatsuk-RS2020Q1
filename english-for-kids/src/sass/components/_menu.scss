@@ -20,4 +20,11 @@
   &:active {
     color: $color-active;
   }
+
+  &_current {
+    color: $color-active;
+    &:visited {
+      color: $color-active;
+    }
+  }
 }

@@ -89,3 +89,35 @@
 .card__back {
   transform: rotateY(180deg);
 }
+
+@media (max-width: 1199px) {
+  .card {
+    height: 285px;
+  }
+}
+
+@media (max-width: 991px) {
+  .card {
+    width: 45%;
+    height: 319px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 575px) {
+  .card {
+    width: 320px;
+    height: 319px;
+  }
+}
+
+@media (max-width: 370px) {
+  .card {
+    height: 280px;
+  }
+}

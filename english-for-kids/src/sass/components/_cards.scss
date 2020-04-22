@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   padding: 60px 0.75rem;
 }
+
+@media (max-width: 575px) {
+  .cards {
+    justify-content: center;
+  }
+}
