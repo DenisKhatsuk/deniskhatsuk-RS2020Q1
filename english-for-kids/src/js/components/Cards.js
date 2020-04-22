@@ -74,6 +74,8 @@ export default class Cards {
     categories.addEventListener('click', (e)=>{
       if (e.target.classList.contains('cards') || !categories.classList.contains('categories')) return;
       selectedCategoryIndex = e.target.closest('.card').getAttribute('data-category');
+      document.querySelector('.menu__link_current').classList.remove('menu__link_current');
+      document.querySelector(`[data-category="${selectedCategoryIndex}"]`).classList.add('menu__link_current');
       this._initializeCategoriesCards(selectedCategoryIndex);
     });
   }
