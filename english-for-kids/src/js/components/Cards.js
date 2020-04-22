@@ -1,5 +1,7 @@
+import cardsData from '../data/cards_data';
+
 export default class Cards {
-  constructor(cardsData, outputClass) {
+  constructor(outputClass) {
     this.categories = cardsData[0];
     this.output = document.querySelector(`.${outputClass}`);
   }
@@ -8,11 +10,11 @@ export default class Cards {
     this._displayCategoriesInMenu('aside-panel');
   }
 
-  _createCategory(category) {
+  _createCategory(category, categoryIndex) {
     const card = `
     <div class="card">
       <div class="overlay">
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
+        <img class="card-img-top" src="./src/img/${cardsData[categoryIndex][1].image}" alt="Card image cap">
       </div>
       
       <div class="card-body">
@@ -24,12 +26,15 @@ export default class Cards {
 
   _initializeCategories() {
     let cards = '';
+    let categoryIndex = 1;
     this.categories.forEach((category)=>{
-      const card = this._createCategory(category);
+      const card = this._createCategory(category, categoryIndex);
+      categoryIndex++;
       cards += card;
     });
     this.output.innerHTML = cards;
     this.output.classList.add('categories');
+    this._addCategoriesClickHandler();
   }
 
   _displayCategoriesInMenu(menuParentClass) {
@@ -46,6 +51,16 @@ export default class Cards {
     menuParent.appendChild(menu);
   }
 
+  _addCategoriesClickHandler() {
+    const categories = document.querySelector('.categories');
+    //const selectedCategory;
+    categories.addEventListener('click', (e)=>{
+      //selectedCategory = e.target.closest('.card').querySelector('.card-title').textContent;
+    });
+  }
 
+  // _initializeCategoriesCards(selectedCategory) {
+  //   const categoryIndex;
+  // }
 
 }
