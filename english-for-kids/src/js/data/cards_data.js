@@ -1,5 +1,5 @@
 const cardsData = [ 
-  ['Действия', 'Действия 2', 'Животные', 'Животные 2', 'Одежда', 'Эмоции'],
+  ['Действия', 'Действия 2', 'Животные', 'Животные 2', 'Одежда', 'Эмоции', 'Предметы', 'Спорт'],
   [
     {
       word: 'cry',
@@ -298,6 +298,95 @@ const cardsData = [
       translation: 'смех',
       image: 'cards/laugh.jpg',
       audioSrc: 'audio/laugh.mp3'
+    }
+  ],
+  [
+    {
+      word: 'table',
+      translation: 'стол',
+      image: 'cards/table.jpg',
+    },
+    {
+      word: 'chair',
+      translation: 'стул',
+      image: 'cards/chair.jpg',
+    },
+    {
+      word: 'pencil',
+      translation: 'карандаш',
+      image: 'cards/pencil.jpg',
+    },
+    {
+      word: 'bag',
+      translation: 'сумка',
+      image: 'cards/bag.jpg',
+    },
+    {
+      word: 'ring',
+      translation: 'кольцо',
+      image: 'cards/ring.jpg',
+    },
+    {
+      word: 'lamp',
+      translation: 'лфмпа',
+      image: 'cards/lamp.jpg',
+    },
+    {
+      word: 'computer',
+      translation: 'компьютер',
+      image: 'cards/computer.jpg',
+    },
+    {
+      word: 'bucket',
+      translation: 'ведро',
+      image: 'cards/bucket.jpg',
+    },
+    {
+      word: 'mirror',
+      translation: 'зеркало',
+      image: 'cards/mirror.jpg',
+    }
+  ],
+  [
+    {
+      word: 'ball',
+      translation: 'мяч',
+      image: 'cards/ball.jpg',
+    },
+    {
+      word: 'racket',
+      translation: 'ракетка',
+      image: 'cards/racket.jpg',
+    },
+    {
+      word: 'hoop',
+      translation: 'обруч',
+      image: 'cards/hoop.jpg',
+    },
+    {
+      word: 'bicycle',
+      translation: 'велосипед',
+      image: 'cards/bicycle.jpg',
+    },
+    {
+      word: 'skateboard',
+      translation: 'скейтборд',
+      image: 'cards/skateboard.jpg',
+    },
+    {
+      word: 'whistle',
+      translation: 'свисток',
+      image: 'cards/whistle.jpg',
+    },
+    {
+      word: 'helmet',
+      translation: 'шлем',
+      image: 'cards/helmet.jpg',
+    },
+    {
+      word: 'puck',
+      translation: 'шайба',
+      image: 'cards/puck.jpg',
     }
   ]
 ]
