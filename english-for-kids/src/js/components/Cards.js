@@ -12,7 +12,7 @@ export default class Cards {
 
   _createCategory(category, categoryIndex) {
     const card = `
-    <div class="card">
+    <div class="card" data-category='${categoryIndex}'>
       <div class="overlay">
         <img class="card-img-top" src="./src/img/${cardsData[categoryIndex][1].image}" alt="Card image cap">
       </div>
@@ -41,26 +41,79 @@ export default class Cards {
     const menuParent = document.querySelector(`.${menuParentClass}`);
     let menu = document.createElement('ul');
     menu.classList.add('menu');
-    menu.innerHTML = '<li class="menu__item">Категории</li>';
+    menu.innerHTML = '<li class="menu__item"><a class="menu__link" href="/">Категории</a></li>';
     let menuItem;
+    let categoryIndex = 1;
     this.categories.forEach((category)=>{
-      menuItem = `<li class="menu__item">${category}</li>`;
+      menuItem = `<li class="menu__item"><a class="menu__link" href="_#" data-category="category-${categoryIndex}">${category}</a></li>`;
       menu.innerHTML += menuItem;
     });
-    console.log('Hello');
     menuParent.appendChild(menu);
   }
 
   _addCategoriesClickHandler() {
-    const categories = document.querySelector('.categories');
-    //const selectedCategory;
+    let categories = document.getElementsByClassName('categories')[0];
+    let selectedCategoryIndex = '';
     categories.addEventListener('click', (e)=>{
-      //selectedCategory = e.target.closest('.card').querySelector('.card-title').textContent;
+      if (e.target.classList.contains('cards') || !categories.classList.contains('categories')) return;
+      selectedCategoryIndex = e.target.closest('.card').getAttribute('data-category');
+      this._initializeCategoriesCards(selectedCategoryIndex);
     });
   }
 
-  // _initializeCategoriesCards(selectedCategory) {
-  //   const categoryIndex;
-  // }
+  _addCategoriesCardsClickHandler() {
+    const categoryCards = document.querySelector('[class*="category"]');
+    categoryCards.addEventListener('click', (e)=>{
+      if (e.target.classList.contains('fas')) {
+        const currentCard = e.target.closest('.card');
+        currentCard.classList.add('card__translated');
+        console.log(currentCard);
+        currentCard.addEventListener('mouseleave', ()=>{
+          currentCard.classList.remove('card__translated');
+        });
+      }
+    });
+  }
+
+  _createCategoryCard(el) {
+    const card = `
+    <div class="card card__category">
+        <div class="card__face card__face_front">
+          <div class="overlay">
+            <img class="card-img-top" src="./src/img/${el.image}" alt="Card image cap">
+          </div>
+          
+          <div class="card-body">
+            <a class="btn-floating card-btn btn-action ml-auto mr-4">
+              <i class="fas fa-book-open"></i>
+            </a>
+            <h4 class="card-title">${el.word}</h4>
+          </div>
+        </div>
+
+        <div class="card__face card__face_back">
+          <div class="overlay">
+            <img class="card-img-top" src="./src/img/${el.image}" alt="Card image cap">
+          </div>
+          
+          <div class="card-body">
+            <h4 class="card-title">${el.translation}</h4>
+          </div>
+        </div>
+    </div>`;
+    return card;
+  }
+
+  _initializeCategoriesCards(selectedCategoryIndex) {
+    let cards = '';
+    cardsData[selectedCategoryIndex].forEach((el)=>{
+      const card = this._createCategoryCard(el);
+      cards += card;
+    });  
+    this.output.innerHTML = cards;
+    this.output.classList.remove('categories');
+    this.output.classList.add(`category-${selectedCategoryIndex}`);
+    this._addCategoriesCardsClickHandler();
+  }
 
 }
