@@ -52,9 +52,19 @@ export default class Cards {
     menuParent.appendChild(menu);
     menuParent.addEventListener('click', (e)=>{
       if (!e.target.classList.contains('menu__link')) return;
+      menuParent.querySelector('.menu__link_current').classList.remove('menu__link_current');
+      e.target.classList.add('menu__link_current');
       let categoryIndex = e.target.getAttribute('data-category');
-      e.preventDefault();
-      this._initializeCategoriesCards(categoryIndex);
+      if (categoryIndex) {
+        const asidePanel = document.querySelector('.aside-panel');
+        const asideHeader = document.querySelector('.header__aside');
+        const asideButton = document.querySelector('.animated-icon');
+        e.preventDefault();
+        this._initializeCategoriesCards(categoryIndex);
+        asidePanel.classList.remove('aside-panel_open');
+        asideHeader.classList.remove('header__aside_open');
+        asideButton.classList.remove('open');
+      }
     });
   }
 
@@ -73,12 +83,11 @@ export default class Cards {
     categoryCards.addEventListener('click', (e)=>{
       const currentCard = e.target.closest('.card');
       if (e.target.classList.contains('fas')) {
-        
         currentCard.classList.add('card__translated');
         currentCard.addEventListener('mouseleave', ()=>{
           currentCard.classList.remove('card__translated');
         });
-      } else {
+      } else if(currentCard) {
         const audioName = currentCard.querySelector('.card-title').textContent;
         const audioElement = new Audio(`src/audio/${audioName}.mp3`);
         audioElement.play();
