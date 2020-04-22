@@ -47,6 +47,7 @@ export default class Cards {
     this.categories.forEach((category)=>{
       menuItem = `<li class="menu__item"><a class="menu__link" href="_#" data-category="${categoryIndex}">${category}</a></li>`;
       menu.innerHTML += menuItem;
+      categoryIndex++;
     });
     menuParent.appendChild(menu);
     menuParent.addEventListener('click', (e)=>{
