@@ -5,9 +5,9 @@ export default class Aside {
   }
 
   init() {
-    this.trigger.addEventListener('click', ()=>{
+    this.trigger.addEventListener('click', () => {
       this.aside.classList.toggle('aside-panel_open');
       this.aside.closest('.header__aside').classList.toggle('header__aside_open');
-    })
+    });
   }
 }

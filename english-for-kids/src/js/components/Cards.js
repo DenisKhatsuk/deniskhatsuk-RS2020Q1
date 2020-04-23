@@ -1,16 +1,19 @@
 import cardsData from '../data/cards_data';
 
+const categories = cardsData[0];
+
 export default class Cards {
   constructor(outputClass) {
-    this.categories = cardsData[0];
+    this.categories = categories;
     this.output = document.querySelector(`.${outputClass}`);
   }
+
   init() {
-    this._initializeCategories();
-    this._displayCategoriesInMenu('aside-panel');
+    this.initializeCategories();
+    this.displayCategoriesInMenu('aside-panel');
   }
 
-  _createCategory(category, categoryIndex) {
+  static createCategory(category, categoryIndex) {
     const card = `
     <div class="card" data-category='${categoryIndex}'>
       <div class="overlay">
@@ -24,43 +27,43 @@ export default class Cards {
     return card;
   }
 
-  _initializeCategories() {
+  initializeCategories() {
     let cards = '';
     let categoryIndex = 1;
-    this.categories.forEach((category)=>{
-      const card = this._createCategory(category, categoryIndex);
-      categoryIndex++;
+    this.categories.forEach((category) => {
+      const card = Cards.createCategory(category, categoryIndex);
+      categoryIndex += 1;
       cards += card;
     });
     this.output.innerHTML = cards;
     this.output.classList.add('categories');
-    this._addCategoriesClickHandler();
+    this.addCategoriesClickHandler();
   }
 
-  _displayCategoriesInMenu(menuParentClass) {
+  displayCategoriesInMenu(menuParentClass) {
     const menuParent = document.querySelector(`.${menuParentClass}`);
-    let menu = document.createElement('ul');
+    const menu = document.createElement('ul');
     menu.classList.add('menu');
     menu.innerHTML = '<li class="menu__item"><a class="menu__link menu__link_current" href="/">Категории</a></li>';
     let menuItem;
     let categoryIndex = 1;
-    this.categories.forEach((category)=>{
+    this.categories.forEach((category) => {
       menuItem = `<li class="menu__item"><a class="menu__link" href="_#" data-category="${categoryIndex}">${category}</a></li>`;
       menu.innerHTML += menuItem;
-      categoryIndex++;
+      categoryIndex += 1;
     });
     menuParent.appendChild(menu);
-    menuParent.addEventListener('click', (e)=>{
+    menuParent.addEventListener('click', (e) => {
       if (!e.target.classList.contains('menu__link')) return;
       menuParent.querySelector('.menu__link_current').classList.remove('menu__link_current');
       e.target.classList.add('menu__link_current');
-      let categoryIndex = e.target.getAttribute('data-category');
+      categoryIndex = e.target.getAttribute('data-category');
       if (categoryIndex) {
         const asidePanel = document.querySelector('.aside-panel');
         const asideHeader = document.querySelector('.header__aside');
         const asideButton = document.querySelector('.animated-icon');
         e.preventDefault();
-        this._initializeCategoriesCards(categoryIndex);
+        this.initializeCategoriesCards(categoryIndex);
         asidePanel.classList.remove('aside-panel_open');
         asideHeader.classList.remove('header__aside_open');
         asideButton.classList.remove('open');
@@ -68,28 +71,28 @@ export default class Cards {
     });
   }
 
-  _addCategoriesClickHandler() {
-    let categories = document.getElementsByClassName('categories')[0];
+  addCategoriesClickHandler() {
+    const currentCategories = document.getElementsByClassName('categories')[0];
     let selectedCategoryIndex = '';
-    categories.addEventListener('click', (e)=>{
-      if (e.target.classList.contains('cards') || !categories.classList.contains('categories')) return;
+    currentCategories.addEventListener('click', (e) => {
+      if (e.target.classList.contains('cards') || !currentCategories.classList.contains('categories')) return;
       selectedCategoryIndex = e.target.closest('.card').getAttribute('data-category');
       document.querySelector('.menu__link_current').classList.remove('menu__link_current');
       document.querySelector(`[data-category="${selectedCategoryIndex}"]`).classList.add('menu__link_current');
-      this._initializeCategoriesCards(selectedCategoryIndex);
+      this.initializeCategoriesCards(selectedCategoryIndex);
     });
   }
 
-  _addCategoriesCardsClickHandler() {
+  static addCategoriesCardsClickHandler() {
     const categoryCards = document.querySelector('[class*="category"]');
-    categoryCards.addEventListener('click', (e)=>{
+    categoryCards.addEventListener('click', (e) => {
       const currentCard = e.target.closest('.card');
       if (e.target.classList.contains('fas')) {
         currentCard.classList.add('card__translated');
-        currentCard.addEventListener('mouseleave', ()=>{
+        currentCard.addEventListener('mouseleave', () => {
           currentCard.classList.remove('card__translated');
         });
-      } else if(currentCard) {
+      } else if (currentCard) {
         const audioName = currentCard.querySelector('.card-title').textContent;
         const audioElement = new Audio(`src/audio/${audioName}.mp3`);
         audioElement.play();
@@ -97,7 +100,7 @@ export default class Cards {
     });
   }
 
-  _createCategoryCard(el) {
+  static createCategoryCard(el) {
     const card = `
     <div class="card card__category">
         <div class="card__face card__face_front">
@@ -126,16 +129,15 @@ export default class Cards {
     return card;
   }
 
-  _initializeCategoriesCards(selectedCategoryIndex) {
+  initializeCategoriesCards(selectedCategoryIndex) {
     let cards = '';
-    cardsData[selectedCategoryIndex].forEach((el)=>{
-      const card = this._createCategoryCard(el);
+    cardsData[selectedCategoryIndex].forEach((el) => {
+      const card = Cards.createCategoryCard(el);
       cards += card;
-    });  
+    });
     this.output.innerHTML = cards;
     this.output.classList.remove('categories');
     this.output.classList.add(`category-${selectedCategoryIndex}`);
-    this._addCategoriesCardsClickHandler();
+    Cards.addCategoriesCardsClickHandler();
   }
-
 }

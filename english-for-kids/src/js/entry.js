@@ -1,6 +1,6 @@
-import '../vendor/mdb/css/bootstrap.min.css'
-import '../vendor/mdb/css/mdb.min.css'
-import '../sass/style.scss'
+import '../vendor/mdb/css/bootstrap.min.css';
+import '../vendor/mdb/css/mdb.min.css';
+import '../sass/style.scss';
 
 import Hamburger from './components/Hamburger';
 import Aside from './components/Aside';
