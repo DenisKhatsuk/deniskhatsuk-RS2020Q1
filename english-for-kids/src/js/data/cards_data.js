@@ -171,7 +171,7 @@ const cardsData = [
     },
     {
       word: 'giraffe',
-      translation: 'жирафа',
+      translation: 'жираф',
       image: 'cards/giraffe.jpg',
       audioSrc: 'audio/giraffe.mp3',
     },

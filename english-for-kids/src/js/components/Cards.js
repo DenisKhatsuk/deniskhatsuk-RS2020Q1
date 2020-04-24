@@ -30,11 +30,15 @@ export default class Cards {
   initializeCategories() {
     let cards = '';
     let categoryIndex = 1;
+    let oldOutput = this.output;
+    let newOutput = oldOutput.cloneNode(true);
     this.categories.forEach((category) => {
       const card = Cards.createCategory(category, categoryIndex);
       categoryIndex += 1;
       cards += card;
     });
+    oldOutput.parentNode.replaceChild(newOutput, oldOutput);
+    this.output = newOutput;
     this.output.innerHTML = cards;
     this.output.classList.add('categories');
     this.addCategoriesClickHandler();
@@ -131,10 +135,14 @@ export default class Cards {
 
   initializeCategoriesCards(selectedCategoryIndex) {
     let cards = '';
+    let oldOutput = this.output;
+    let newOutput = oldOutput.cloneNode(true);
     cardsData[selectedCategoryIndex].forEach((el) => {
       const card = Cards.createCategoryCard(el);
       cards += card;
     });
+    oldOutput.parentNode.replaceChild(newOutput, oldOutput);
+    this.output = newOutput;
     this.output.innerHTML = cards;
     this.output.classList.remove('categories');
     this.output.classList.add(`category-${selectedCategoryIndex}`);
