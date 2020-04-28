@@ -31,23 +31,31 @@ export default class PlayPanel {
   buttonClickHandler() {
     const button = document.querySelector('.play-panel__btn');
     button.addEventListener('click', ()=>{
-      button.classList.add('play-panel__btn_clicked');
-      this.startGame();
+      if (!button.classList.contains('play-panel__btn_clicked')) {
+        button.classList.add('play-panel__btn_clicked');
+        this.startGame();
+      }
     });
   }
 
   startGame() {
     const cardsHolder = document.querySelector('.cards');
     const cardsElements = document.querySelectorAll('.card.card__category');
+    const button = document.querySelector('.play-panel__btn');
     let cards = [];
     let currentCard = '';
     let errors = 0;
+
     cardsElements.forEach((el)=>{
       cards.push(el.querySelector('.card-title').textContent);
     });
     [currentCard, cards] = this.voiceCards(cards); 
     
-
+    button.addEventListener('click', (e)=>{
+      const audioElement = new Audio(`src/audio/${currentCard}.mp3`);
+      audioElement.play();
+    });
+    
     cardsHolder.addEventListener('click', (e)=>{
       let clickedCard = e.target.closest('.card.card__category');
       if (clickedCard && !clickedCard.classList.contains('card_disabled')) {
@@ -70,7 +78,7 @@ export default class PlayPanel {
             `;
             const audioElement = new Audio(`src/audio/${finalAudio}.mp3`);
             audioElement.play();
-            setTimeout(()=>{document.querySelector('.header__logo > a').click();}, 4000);
+            setTimeout(()=>{document.querySelector('.header__logo > a').click();}, 3500);
           }
         } else {
           const audioElement = new Audio(`src/audio/error.mp3`);
