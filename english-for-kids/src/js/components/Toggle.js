@@ -5,8 +5,9 @@ export default class Toggle {
   }
 
   init() {
+    const body = document.querySelector('body');
     this.toggle.querySelector('label').addEventListener('click', ()=>{
-      document.querySelector('body').classList.toggle('play');
+      body.classList.toggle('play');
       this.state = this.state === 'train' ? 'play' : 'train';
     });
   }

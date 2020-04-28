@@ -1,4 +1,8 @@
 .play {
+  .cards {
+    padding: 30px 0.75rem;
+  }
+
   .cards[class*="category"] {
     .card {
       height: 216px;
@@ -12,6 +16,31 @@
       display: none;
     }
   }
+
+  .play-panel {
+    height: 80px;
+  }
+
+  .category-mode {
+    .play-panel__message {
+      opacity: 0;
+    }
+
+    .play-panel__btn {
+      opacity: 1;
+    }
+  }
+  
+  .categories-mode {
+    .play-panel__message {
+      opacity: 1;
+    }
+
+    .play-panel__btn {
+      opacity: 0;
+    }
+  }
+  
 }
 
 @media (max-width: 1199px) {

@@ -88,15 +88,16 @@ export default class Cards {
   }
 
   static addCategoriesCardsClickHandler() {
-    const categoryCards = document.querySelector('[class*="category"]');
+    const categoryCards = document.querySelector('.cards[class*="category"]');
     categoryCards.addEventListener('click', (e) => {
       const currentCard = e.target.closest('.card');
+      const isPlayMode = document.querySelector('body').classList.contains('play');
       if (e.target.classList.contains('fas')) {
         currentCard.classList.add('card__translated');
         currentCard.addEventListener('mouseleave', () => {
           currentCard.classList.remove('card__translated');
         });
-      } else if (currentCard) {
+      } else if (currentCard && !isPlayMode) {
         const audioName = currentCard.querySelector('.card-title').textContent;
         const audioElement = new Audio(`src/audio/${audioName}.mp3`);
         audioElement.play();
@@ -135,6 +136,7 @@ export default class Cards {
 
   initializeCategoriesCards(selectedCategoryIndex) {
     let cards = '';
+    const playPanel = document.querySelector('.play-panel');
     let oldOutput = this.output;
     let newOutput = oldOutput.cloneNode(true);
     cardsData[selectedCategoryIndex].forEach((el) => {
@@ -146,6 +148,10 @@ export default class Cards {
     this.output.innerHTML = cards;
     this.output.classList.remove('categories');
     this.output.classList.add(`category-${selectedCategoryIndex}`);
+    if (playPanel) {
+      playPanel.classList.remove('categories-mode');
+      playPanel.classList.add('category-mode');
+    }
     Cards.addCategoriesCardsClickHandler();
   }
 }

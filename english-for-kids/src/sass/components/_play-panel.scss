@@ -1,0 +1,19 @@
+.play-panel {
+  height: 0;
+  text-align: center;
+  @include transition(0.2s, ease-in-out);
+}
+
+.play-panel__message {
+  position: relative;
+  top: 25px;
+  opacity: 0;
+  color: $color-text;
+}
+
+.play-panel__btn {
+  position: relative;
+  bottom: 20px;
+  opacity: 0;
+  border-radius: 10rem;
+}
