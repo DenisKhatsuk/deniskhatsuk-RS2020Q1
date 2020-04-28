@@ -4,15 +4,15 @@ export default class PlayPanel {
   }
 
   init() {
-    const playPanel = this.createPlayPanel('Выберите категорию', 'Начать игру');
-    let playPanelEl = document.createElement('div');
+    const playPanel = PlayPanel.createPlayPanel('Выберите категорию', 'Начать игру');
+    const playPanelEl = document.createElement('div');
     playPanelEl.classList.add('play-panel', 'categories-mode');
     playPanelEl.innerHTML = playPanel;
     this.parent.prepend(playPanelEl);
-    this.buttonClickHandler();
+    PlayPanel.buttonClickHandler();
   }
 
-  createPlayPanel(message, button) {
+  static createPlayPanel(message, button) {
     const playPanel = `
       <div class="play-panel__control">
         <h3 class="play-panel__message">${message}</h3>
@@ -28,17 +28,17 @@ export default class PlayPanel {
     return playPanel;
   }
 
-  buttonClickHandler() {
+  static buttonClickHandler() {
     const button = document.querySelector('.play-panel__btn');
-    button.addEventListener('click', ()=>{
+    button.addEventListener('click', () => {
       if (!button.classList.contains('play-panel__btn_clicked')) {
         button.classList.add('play-panel__btn_clicked');
-        this.startGame();
+        PlayPanel.startGame();
       }
     });
   }
 
-  startGame() {
+  static startGame() {
     const cardsHolder = document.querySelector('.cards');
     const cardsElements = document.querySelectorAll('.card.card__category');
     const button = document.querySelector('.play-panel__btn');
@@ -51,32 +51,32 @@ export default class PlayPanel {
     let currentCard = '';
     let errors = 0;
 
-    cardsElements.forEach((el)=>{
+    cardsElements.forEach((el) => {
       cards.push(el.querySelector('.card-title').textContent);
     });
-    [currentCard, cards] = this.voiceCards(cards); 
-    
-    button.addEventListener('click', (e)=>{
+    [currentCard, cards] = PlayPanel.voiceCards(cards);
+
+    button.addEventListener('click', () => {
       const audioElement = new Audio(`src/audio/${currentCard}.mp3`);
       audioElement.play();
     });
-    
-    cardsHolder.addEventListener('click', (e)=>{
-      let clickedCard = e.target.closest('.card.card__category');
+
+    cardsHolder.addEventListener('click', (e) => {
+      const clickedCard = e.target.closest('.card.card__category');
       if (clickedCard && !clickedCard.classList.contains('card_disabled')) {
-        let clickedCardText = clickedCard.querySelector('.card-title').textContent;
+        const clickedCardText = clickedCard.querySelector('.card-title').textContent;
         if (clickedCardText === currentCard) {
-          const audioElement = new Audio(`src/audio/correct.mp3`);
+          let audioElement = new Audio('src/audio/correct.mp3');
           audioElement.play();
-          
+
           rating.appendChild(successStar);
           successStar = successStar.cloneNode(true);
 
           clickedCard.classList.add('card_disabled');
           if (cards.length) {
-            setTimeout(()=>{[currentCard, cards] = this.voiceCards(cards);}, 1500);
+            setTimeout(() => { [currentCard, cards] = PlayPanel.voiceCards(cards); }, 1500);
           } else {
-            const finalText = errors ? `Количество ошибок: ${errors}` : 'Победа!'; 
+            const finalText = errors ? `Количество ошибок: ${errors}` : 'Победа!';
             const finalImg = errors ? 'fail' : 'success';
             const finalAudio = errors ? 'failure' : 'success';
             document.querySelector('.main > .container').innerHTML = `
@@ -85,14 +85,14 @@ export default class PlayPanel {
               <img class="final__img" src="src/img/final/${finalImg}.png" alt="Bunny image">
             </div>
             `;
-            const audioElement = new Audio(`src/audio/${finalAudio}.mp3`);
+            audioElement = new Audio(`src/audio/${finalAudio}.mp3`);
             audioElement.play();
-            setTimeout(()=>{document.querySelector('.header__logo > a').click();}, 3500);
+            setTimeout(() => { document.querySelector('.header__logo > a').click(); }, 3500);
           }
         } else {
-          const audioElement = new Audio(`src/audio/error.mp3`);
+          const audioElement = new Audio('src/audio/error.mp3');
           audioElement.play();
-          
+
           rating.appendChild(failStar);
           failStar = failStar.cloneNode(true);
 
@@ -102,8 +102,8 @@ export default class PlayPanel {
     });
   }
 
-  voiceCards(cards) {
-    let currentCard = cards[Math.ceil(Math.random()*cards.length - 1)];
+  static voiceCards(cards) {
+    const currentCard = cards[Math.ceil(Math.random() * cards.length - 1)];
     const currentCardIndex = cards.indexOf(currentCard);
     if (currentCardIndex > -1) {
       cards.splice(currentCardIndex, 1);
@@ -112,5 +112,4 @@ export default class PlayPanel {
     audioElement.play();
     return [currentCard, cards];
   }
-
 }

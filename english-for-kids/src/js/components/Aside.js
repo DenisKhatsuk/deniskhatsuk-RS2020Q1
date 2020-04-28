@@ -13,7 +13,7 @@ export default class Aside {
   }
 
   outsideAsideClickHandler() {
-    document.querySelector('body').addEventListener('click', (e)=>{
+    document.querySelector('body').addEventListener('click', (e) => {
       const isAsideClick = e.target.closest('.header__aside_open');
       const isAsideOpen = document.querySelector('.header__aside_open');
       const isHamburgerClick = e.target.closest('.header__menu-icon');

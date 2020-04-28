@@ -30,8 +30,8 @@ export default class Cards {
   initializeCategories() {
     let cards = '';
     let categoryIndex = 1;
-    let oldOutput = this.output;
-    let newOutput = oldOutput.cloneNode(true);
+    const oldOutput = this.output;
+    const newOutput = oldOutput.cloneNode(true);
     this.categories.forEach((category) => {
       const card = Cards.createCategory(category, categoryIndex);
       categoryIndex += 1;
@@ -137,8 +137,8 @@ export default class Cards {
   initializeCategoriesCards(selectedCategoryIndex) {
     let cards = '';
     const playPanel = document.querySelector('.play-panel');
-    let oldOutput = this.output;
-    let newOutput = oldOutput.cloneNode(true);
+    const oldOutput = this.output;
+    const newOutput = oldOutput.cloneNode(true);
     cardsData[selectedCategoryIndex].forEach((el) => {
       const card = Cards.createCategoryCard(el);
       cards += card;

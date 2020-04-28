@@ -6,7 +6,7 @@ export default class Toggle {
 
   init() {
     const body = document.querySelector('body');
-    this.toggle.querySelector('label').addEventListener('click', ()=>{
+    this.toggle.querySelector('label').addEventListener('click', () => {
       body.classList.toggle('play');
       this.state = this.state === 'train' ? 'play' : 'train';
       if (this.state === 'train') document.querySelector('.play-panel__btn').classList.remove('play-panel__btn_clicked');
