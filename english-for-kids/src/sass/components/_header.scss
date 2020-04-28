@@ -25,3 +25,19 @@
 .header__aside_open {
   visibility: visible;
 }
+
+.header__toggle {
+  position: absolute;
+  top: 18px;
+  right: 27px;
+  width: 12.25em;
+  height: 5.5em;
+  margin: 0;
+  font-size: 7px;
+}
+
+@media (max-width: 450px) { 
+  .header__toggle {
+    top: 85px;
+  }
+}
