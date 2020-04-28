@@ -16,4 +16,20 @@
   bottom: 20px;
   opacity: 0;
   border-radius: 10rem;
+
+  &_clicked {
+    .play-panel__btn-icon {
+      display: block;
+    }
+
+    .play-panel__btn-text {
+      display: none;
+    }
+  }
+
+}
+
+.play-panel__btn-icon {
+  display: none;
+  font-size: 1.5em;
 }

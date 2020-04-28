@@ -9,6 +9,7 @@ export default class Toggle {
     this.toggle.querySelector('label').addEventListener('click', ()=>{
       body.classList.toggle('play');
       this.state = this.state === 'train' ? 'play' : 'train';
+      if (this.state === 'train') document.querySelector('.play-panel__btn').classList.remove('play-panel__btn_clicked');
     });
   }
 }

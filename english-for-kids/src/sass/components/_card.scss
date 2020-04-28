@@ -9,6 +9,10 @@
   &:hover {
     @include shadow(0 8px 17px 0, 0.2, 0 6px 20px 0, 0.19);
   }
+
+  &_disabled {
+    opacity: 0.5;
+  }
 }
 
 .card__face {
