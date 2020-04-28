@@ -15,7 +15,7 @@ export default class PlayPanel {
   createPlayPanel(message, button) {
     const playPanel = `
       <div class="play-panel__control">
-        <h4 class="play-panel__message">${message}</h4>
+        <h3 class="play-panel__message">${message}</h3>
         <button class="play-panel__btn btn aqua-gradient btn-rounded waves-effect waves-light">
         <i class="play-panel__btn-icon fas fa-redo-alt"></i>
         <span class="play-panel__btn-text">
@@ -23,7 +23,7 @@ export default class PlayPanel {
         </span>
         </button>
       </div>
-      <div class="play-panel__count"></div>
+      <div class="play-panel__rating"></div>
     `;
     return playPanel;
   }
@@ -42,6 +42,11 @@ export default class PlayPanel {
     const cardsHolder = document.querySelector('.cards');
     const cardsElements = document.querySelectorAll('.card.card__category');
     const button = document.querySelector('.play-panel__btn');
+    const rating = document.querySelector('.play-panel__rating');
+    let successStar = document.createElement('div');
+    successStar.classList.add('star', 'star_success');
+    let failStar = document.createElement('div');
+    failStar.classList.add('star', 'star_fail');
     let cards = [];
     let currentCard = '';
     let errors = 0;
@@ -63,6 +68,10 @@ export default class PlayPanel {
         if (clickedCardText === currentCard) {
           const audioElement = new Audio(`src/audio/correct.mp3`);
           audioElement.play();
+          
+          rating.appendChild(successStar);
+          successStar = successStar.cloneNode(true);
+
           clickedCard.classList.add('card_disabled');
           if (cards.length) {
             setTimeout(()=>{[currentCard, cards] = this.voiceCards(cards);}, 1500);
@@ -83,6 +92,10 @@ export default class PlayPanel {
         } else {
           const audioElement = new Audio(`src/audio/error.mp3`);
           audioElement.play();
+          
+          rating.appendChild(failStar);
+          failStar = failStar.cloneNode(true);
+
           errors += 1;
         }
       }
