@@ -6,7 +6,7 @@ export default class PlayPanel {
   init() {
     const playPanel = PlayPanel.createPlayPanel('Выберите категорию', 'Начать игру');
     const playPanelEl = document.createElement('div');
-    playPanelEl.classList.add('play-panel', 'categories-mode');
+    playPanelEl.classList.add('play-panel');
     playPanelEl.innerHTML = playPanel;
     this.parent.prepend(playPanelEl);
     PlayPanel.buttonClickHandler();

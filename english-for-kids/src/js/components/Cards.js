@@ -41,6 +41,8 @@ export default class Cards {
     this.output = newOutput;
     this.output.innerHTML = cards;
     this.output.classList.add('categories');
+    document.querySelector('body').classList.remove('category-mode');
+    document.querySelector('body').classList.add('categories-mode');
     this.addCategoriesClickHandler();
   }
 
@@ -136,7 +138,7 @@ export default class Cards {
 
   initializeCategoriesCards(selectedCategoryIndex) {
     let cards = '';
-    const playPanel = document.querySelector('.play-panel');
+    const body = document.querySelector('body');
     const oldOutput = this.output;
     const newOutput = oldOutput.cloneNode(true);
     cardsData[selectedCategoryIndex].forEach((el) => {
@@ -148,10 +150,8 @@ export default class Cards {
     this.output.innerHTML = cards;
     this.output.classList.remove('categories');
     this.output.classList.add(`category-${selectedCategoryIndex}`);
-    if (playPanel) {
-      playPanel.classList.remove('categories-mode');
-      playPanel.classList.add('category-mode');
-    }
+    body.classList.remove('categories-mode');
+    body.classList.add('category-mode');
     Cards.addCategoriesCardsClickHandler();
   }
 }

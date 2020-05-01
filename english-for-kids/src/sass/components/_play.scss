@@ -21,7 +21,7 @@
     height: 100px;
   }
 
-  .category-mode {
+  &.category-mode {
     .play-panel__message {
       opacity: 0;
     }
@@ -31,7 +31,7 @@
     }
   }
   
-  .categories-mode {
+  &.categories-mode {
     .play-panel__message {
       opacity: 1;
     }
