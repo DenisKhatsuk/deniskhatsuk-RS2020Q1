@@ -54,6 +54,7 @@ module.exports = (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Movie Search',
+        favicon: './src/img/base/favicon.ico',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
