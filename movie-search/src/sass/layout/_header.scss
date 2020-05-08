@@ -1,0 +1,14 @@
+.header {
+  position: sticky;
+  position: -webkit-sticky;
+  height: 60px;
+  background-color: $color-base;
+}
+
+.header__logo {
+  position: relative;
+  top: 12px;
+  width: 150px;
+  height: 100px;
+  background-color: $color-secondary;
+}

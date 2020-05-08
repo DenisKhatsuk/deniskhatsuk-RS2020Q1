@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = (env, options) => {
@@ -54,12 +55,15 @@ module.exports = (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Movie Search',
-        favicon: './src/img/base/favicon.ico',
+        template: './src/html/template.html',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: 'styles.css',
       }),
+      new CopyPlugin([
+        { from: 'src/img/base', to: './src/img' },
+      ]),
     ],
   }
 
