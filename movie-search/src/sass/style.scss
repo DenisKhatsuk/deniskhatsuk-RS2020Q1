@@ -2,9 +2,11 @@
 
 @import "./base/normalize";
 @import "./base/bootstrap-parts";
+@import "./base/typography";
 
 @import "./abstract/constants";
 
 @import "./components/logo";
 
 @import "./layout/header";
+@import "./layout/footer";

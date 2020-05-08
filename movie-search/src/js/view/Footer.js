@@ -5,7 +5,7 @@ export default class Footer {
     const footerEl = document.createElement('footer');
     footerEl.classList.add('footer');
     footerEl.innerHTML = footer;
-    document.querySelector('body').appendChild(footerEl);
+    return footerEl;
   }
 
   static createFooterElement() {
@@ -15,7 +15,8 @@ export default class Footer {
         <span>RS School 2020 Q1</span>
       </div>
       <div class="footer__info">
-        <a class="footer__info-link" href="https://github.com/DenisKhatsuk" target="_blank">
+        <i class="fab fa-github footer__icon"></i>
+        <a class="footer__info-link" href="https://github.com/DenisKhatsuk" target="_blank">DenisKhatsuk</a>
       </div>
     </div>
     `;

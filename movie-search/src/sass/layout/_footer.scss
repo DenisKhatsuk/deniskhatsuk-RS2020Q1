@@ -1,0 +1,25 @@
+.footer {
+  height: 60px;
+  background-color: $color-base;
+  color: $color-light;
+  font-size: 1.5rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__icon {
+    position: relative;
+    top: 2px;
+    font-size: 2rem;
+  }
+
+  &__info-link {
+    color: $color-light;
+    outline: none;
+    text-decoration: none;
+  }
+}

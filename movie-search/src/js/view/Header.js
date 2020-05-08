@@ -5,7 +5,7 @@ export default class Header {
     const headerEl = document.createElement('header');
     headerEl.classList.add('header');
     headerEl.innerHTML = header;
-    document.querySelector('body').prepend(headerEl);
+    return headerEl;
   }
 
   static createHeaderElement() {
