@@ -3,12 +3,16 @@
   position: -webkit-sticky;
   height: 60px;
   background-color: $color-base;
-}
 
-.header__logo {
-  position: relative;
-  top: 12px;
-  width: 150px;
-  height: 100px;
-  background-color: $color-secondary;
+  &__container {
+    position: relative;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 12px;
+    width: 150px;
+    height: 73px;
+    background-color: $color-secondary;
+  }
 }

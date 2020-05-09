@@ -10,8 +10,12 @@ export default class Main {
   static createMainElement() {
     const main = `
     <div class="container main__container">
-      <section class="search">
-        <input class="search" type="text" name="search" id="search">
+      <section class="search-wrapper">
+        <div class="search">
+          <i class="search__icon_search fas fa-search"></i>
+          <input class="search__input" type="search" name="search" id="search" placeholder="Search a movie">
+          <button class="search__button" type="button" id="search__button">Search</button>
+        </div>
       </section>
       <section class="carousel">
 
