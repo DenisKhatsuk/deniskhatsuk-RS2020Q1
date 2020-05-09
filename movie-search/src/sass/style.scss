@@ -9,7 +9,11 @@
 
 @import "./components/logo";
 @import "./components/search";
+@import "./components/swiper";
+
+@import '../../node_modules/swiper/css/swiper.min.css';
 
 @import "./layout/header";
+@import "./layout/main";
 @import "./layout/footer";
 @import "./layout/search-wrapper";
