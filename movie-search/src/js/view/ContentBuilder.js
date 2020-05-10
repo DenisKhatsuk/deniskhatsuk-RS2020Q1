@@ -1,4 +1,5 @@
 export default class ContentBuilder {
+
   constructor(parentClass, ...blocks) {
     this.target = document.querySelector(`.${parentClass}`);
     this.fragment = document.createDocumentFragment();

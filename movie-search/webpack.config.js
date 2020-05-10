@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+require('babel-polyfill');
 
 
 module.exports = (env, options) => {
@@ -13,7 +14,7 @@ module.exports = (env, options) => {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? 'none' : 'source-map',
     watch: !isProduction,
-    entry: './src/js/index.js',
+    entry: ['babel-polyfill', './src/js/index.js'],
     output: {
       filename: 'scripts.js',
       path: path.join(__dirname, './dist'),
@@ -63,6 +64,7 @@ module.exports = (env, options) => {
       }),
       new CopyPlugin([
         { from: 'src/img/base', to: './src/img' },
+        { from: 'src/img/swiper', to: './src/img' },
       ]),
     ],
   }

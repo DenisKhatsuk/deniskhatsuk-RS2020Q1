@@ -1,6 +1,7 @@
 .swiper-container {
   width: 85%;
   height: 350px;
+  padding: 0 45px;
 }
 
 .swiper-pagination-bullet-active {
@@ -16,5 +17,9 @@
   width: 200px;
   height: 80%;
   margin: 20px 0;
-  background-color: $color-secondary;
+  text-align: center;
+
+  &__image {
+    width: 180px;
+  }
 }
