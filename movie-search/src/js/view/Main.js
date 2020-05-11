@@ -1,5 +1,7 @@
+import Search from './Search';
+
 export default class Main {
-  createMain() {
+  static createMain() {
     const main = Main.createMainElement();
     const mainEl = document.createElement('main');
     mainEl.classList.add('main');
@@ -8,14 +10,11 @@ export default class Main {
   }
 
   static createMainElement() {
+    const search = Search.createSearchMarkup();
     const main = `
     <div class="container main__container">
       <section class="search-wrapper">
-        <div class="search">
-          <i class="search__icon_search fas fa-search"></i>
-          <input class="search__input" type="search" name="search" id="search" placeholder="Search a movie">
-          <button class="search__button" type="button" id="search__button">Search</button>
-        </div>
+        ${search}
       </section>
       <section class="carousel">
 
@@ -25,7 +24,7 @@ export default class Main {
     return main;
   }
 
-  setMinHeight() {
+  static setMinHeight() {
     const headerHeight = document.querySelector('header').offsetHeight;
     const footerHeight = document.querySelector('footer').offsetHeight;
     const windowHeight = window.innerHeight;
@@ -33,10 +32,10 @@ export default class Main {
     document.querySelector('main').setAttribute('style', `min-height: ${mainMinHeight}px`);
   }
 
-  addMinHeight() {
-    this.setMinHeight();
-    window.addEventListener('resize', ()=>{
-      this.setMinHeight();
+  static addMinHeight() {
+    Main.setMinHeight();
+    window.addEventListener('resize', () => {
+      Main.setMinHeight();
     });
   }
 }

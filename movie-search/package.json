@@ -13,6 +13,9 @@
   },
   "author": "Dzianis Khatsuk",
   "license": "ISC",
+  "dependencies": {
+    "swiper": "^5.3.8"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
@@ -30,7 +33,6 @@
     "node-sass": "^4.13.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
-    "swiper": "^5.3.8",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"

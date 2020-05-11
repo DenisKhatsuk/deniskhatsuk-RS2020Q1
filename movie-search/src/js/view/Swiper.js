@@ -1,7 +1,6 @@
 import Swiper from 'swiper';
-
+// import SearchController from '../controller/SearchController';
 export default class SwiperSlider {
-
   constructor(parent) {
     this.parent = document.querySelector(`.${parent}`);
   }
@@ -39,30 +38,27 @@ export default class SwiperSlider {
       },
     });
 
-    mySwiper.appendSlide(this.createSlide());
-    mySwiper.appendSlide(this.createSlide());
-    mySwiper.appendSlide(this.createSlide());
-    mySwiper.appendSlide(this.createSlide());
-    mySwiper.appendSlide(this.createSlide());
-    mySwiper.appendSlide(this.createSlide());
-
+    mySwiper.appendSlide(SwiperSlider.createSlide());
+    mySwiper.appendSlide(SwiperSlider.createSlide());
+    mySwiper.appendSlide(SwiperSlider.createSlide());
+    mySwiper.appendSlide(SwiperSlider.createSlide());
+    mySwiper.appendSlide(SwiperSlider.createSlide());
+    mySwiper.appendSlide(SwiperSlider.createSlide());
   }
 
   static createSwiperElement() {
     const swiperEl = `
     <div class="swiper-container">
       <div class="swiper-wrapper">
-
       </div>
     <div class="swiper-pagination"></div>
-
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     `;
     return swiperEl;
   }
 
-  createSlide(name = 'The live of John Doe', poster = 'no_poster.jpg', date = 2020, imdb = 9) {
+  static createSlide(name = 'The live of John Doe', poster = 'no_poster.jpg', date = 2020, imdb = 9) {
     const swiperSlide = `
     <div class="swiper-slide">
       <div class="swiper-slide__name">${name}</div>

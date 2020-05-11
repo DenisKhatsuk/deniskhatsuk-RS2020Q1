@@ -30,9 +30,9 @@ module.exports = (env, options) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+            },
+          },
         },
         {
           test: /\.s?css$/,
@@ -51,7 +51,7 @@ module.exports = (env, options) => {
             },
           ],
         },
-      ]
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -67,7 +67,7 @@ module.exports = (env, options) => {
         { from: 'src/img/swiper', to: './src/img' },
       ]),
     ],
-  }
+  };
 
   return config;
-}
+};
