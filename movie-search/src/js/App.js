@@ -56,12 +56,24 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  async function makeRequest(request) {
+    const searchRequest = request || searchInput.value;
+    const moviesList = await InputHandler.getMoviesList(searchRequest);
+    return moviesList;
+  }
+
   async function inputHandler(event) {
     event.preventDefault();
-    const searchRequest = searchInput.value;
-    const moviesList = await InputHandler.getMoviesList(searchRequest);
+    const moviesList = await makeRequest();
     showResults(moviesList);
   }
 
   searchForm.addEventListener('submit', inputHandler);
+
+  async function initialRequest(movie) {
+    const moviesList = await makeRequest(movie);
+    showResults(moviesList);
+  }
+
+  initialRequest('Subspecies');
 });
