@@ -1,12 +1,11 @@
 class SearchDataHandler {
   static async getMovies(searchInput) {
-    const searchDataHandler = new SearchDataHandler();
     const apiKey = 'fa7b0bcf';
     const request = searchInput.value.toString();
-    const url = `http://www.omdbapi.com/?s=${request}&apikey=${apiKey}`;
+    const url = `//omdbapi.com/?s=${request}&apikey=${apiKey}`;
     const response = await fetch(url);
     const moviesFullData = await response.json();
-    const moviesList = searchDataHandler.parseMovies(moviesFullData);
+    const moviesList = SearchDataHandler.parseMovies(moviesFullData);
     return moviesList;
   }
 

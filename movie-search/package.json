@@ -2,7 +2,7 @@
   "name": "movie-search",
   "version": "1.0.0",
   "description": "Movie Search RSSchool task",
-  "main": "./src/js/index.js",
+  "main": "./src/js/App.js",
   "scripts": {
     "style": "sass --watch src/sass/style.scss style.css",
     "lint": "eslint ./src/js",

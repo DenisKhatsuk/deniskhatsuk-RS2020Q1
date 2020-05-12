@@ -1,6 +1,5 @@
 export default class Footer {
-
-  createFooter() {
+  static createFooter() {
     const footer = Footer.createFooterElement();
     const footerEl = document.createElement('footer');
     footerEl.classList.add('footer');

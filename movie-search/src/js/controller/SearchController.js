@@ -1,5 +1,3 @@
-// import SearchDataHandler from '../data/SearchDataHandler';
-
 class SearchController {
   constructor() {
     this.movieListeners = [];
@@ -9,7 +7,7 @@ class SearchController {
     this.movieListeners.push(listener);
   }
 
-  async start() {
+  async startEventListeners() {
     this.movieListeners.forEach((listener) => {
       listener();
     });

@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -14,7 +13,7 @@ module.exports = (env, options) => {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? 'none' : 'source-map',
     watch: !isProduction,
-    entry: ['babel-polyfill', './src/js/index.js'],
+    entry: ['babel-polyfill', './src/js/App.js'],
     output: {
       filename: 'scripts.js',
       path: path.join(__dirname, './dist'),

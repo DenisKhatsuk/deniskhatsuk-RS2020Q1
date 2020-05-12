@@ -1,9 +1,4 @@
 export default class Search {
-  constructor(searchClass) {
-    this.searchInput = document.querySelector(`.${searchClass} input`);
-    this.searchButton = document.querySelector(`.${searchClass} button`);
-  }
-
   static createSearchMarkup() {
     const searchMarkup = `
     <div class="search">
@@ -13,11 +8,5 @@ export default class Search {
     </div>
     `;
     return searchMarkup;
-  }
-
-  searchInputListener() {
-    this.searchButton.addEventListener('click', () => {
-      console.log('Search data added');
-    });
   }
 }

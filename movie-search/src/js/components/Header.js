@@ -1,6 +1,5 @@
 export default class Header {
-
-  createHeader() {
+  static createHeader() {
     const header = Header.createHeaderElement();
     const headerEl = document.createElement('header');
     headerEl.classList.add('header');
