@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const searchForm = document.querySelector('form.search');
   const searchInput = searchForm.querySelector('input');
+  searchInput.focus();
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
@@ -64,6 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function inputHandler(event) {
     event.preventDefault();
+    searchInput.placeholder = searchInput.value;
     const moviesList = await makeRequest();
     showResults(moviesList);
   }
