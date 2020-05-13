@@ -5,10 +5,33 @@ class InputHandler {
 
   async getMoviesList(searchRequest) {
     const url = `//omdbapi.com/?s=${searchRequest}&apikey=${this.apiKey}`;
+    // try {
     const response = await fetch(url);
+    // } catch(error) {
+
+    // }
     const moviesFullData = await response.json();
     const moviesList = InputHandler.parseMovies(moviesFullData);
-    return moviesList;
+    const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));
+    const movies = InputHandler.addImdbRatings(moviesList, moviesRatings);
+    return movies;
+  }
+
+  createRatingsArray(moviesList) {
+    const arrayOfRatings = moviesList.map((movie) => (
+      this.getImdbRating(movie.imdbID)
+    ));
+    return arrayOfRatings;
+  }
+
+  static addImdbRatings(moviesList, moviesRatings) {
+    const movies = moviesList.map((movie, index) => (
+      Object.defineProperty(movie, 'imdbRating', {
+        __proto__: null,
+        value: moviesRatings[index],
+      })
+    ));
+    return movies;
   }
 
   static parseMovies(response) {
@@ -20,6 +43,14 @@ class InputHandler {
       poster: Poster,
       imdbID,
     }));
+  }
+
+  async getImdbRating(movieID) {
+    const url = `//omdbapi.com/?i=${movieID}&apikey=${this.apiKey}`;
+    const response = await fetch(url);
+    const movieInfo = await response.json();
+    const rating = movieInfo.imdbRating;
+    return rating;
   }
 }
 

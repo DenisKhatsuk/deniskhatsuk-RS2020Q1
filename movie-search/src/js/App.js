@@ -16,20 +16,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const searchForm = document.querySelector('form.search');
   const searchInput = searchForm.querySelector('input');
-  const searchSpinner = document.querySelector('.search__icon_spinner');
-  const searchClear = document.querySelector('.search__icon_close');
+  const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
+  const searchClearButton = document.querySelector('.search__icon_close');
   searchInput.focus();
   searchInput.addEventListener('input', () => {
     if (searchInput.value !== '') {
-      searchClear.classList.add('search__icon_visible');
+      searchClearButton.classList.add('search__icon_visible');
     } else {
-      searchClear.classList.remove('search__icon_visible');
+      searchClearButton.classList.remove('search__icon_visible');
     }
   });
-  searchClear.addEventListener('click', () => {
+  searchClearButton.addEventListener('click', () => {
     searchInput.value = '';
     searchInput.placeholder = 'Search a movie';
-    searchClear.classList.remove('search__icon_visible');
+    searchClearButton.classList.remove('search__icon_visible');
     searchInput.focus();
   });
   const swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -62,14 +62,14 @@ window.addEventListener('DOMContentLoaded', () => {
     },
   });
 
-  function showResults(moviesList) {
+  function showResults(movies) {
     swiperWrapper.innerHTML = '';
-    searchSpinner.setAttribute('style', 'display: none');
-    moviesList.forEach((movie) => {
+    searchSpinnerIcon.setAttribute('style', 'display: none');
+    movies.forEach((movie) => {
       const {
-        title, poster, year, imdbID,
+        title, poster, year, imdbRating,
       } = movie;
-      mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbID));
+      mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating));
     });
   }
 
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function inputHandler(event) {
     event.preventDefault();
-    searchSpinner.setAttribute('style', 'display: inline-block');
+    searchSpinnerIcon.setAttribute('style', 'display: inline-block');
     searchInput.placeholder = searchInput.value;
     const moviesList = await makeRequest();
     showResults(moviesList);
@@ -90,8 +90,8 @@ window.addEventListener('DOMContentLoaded', () => {
   searchForm.addEventListener('submit', inputHandler);
 
   async function initialRequest(movie) {
-    const moviesList = await makeRequest(movie);
-    showResults(moviesList);
+    const movies = await makeRequest(movie);
+    showResults(movies);
   }
 
   initialRequest('Subspecies');
