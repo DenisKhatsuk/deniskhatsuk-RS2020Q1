@@ -20,7 +20,7 @@ export default class SwiperSlider {
   static createSlide(title = 'N/A', poster = './src/img/no_poster.jpg', year = 'N/A', imdbID = 'N/A') {
     const swiperSlide = `
     <div class="swiper-slide">
-      <div class="swiper-slide__name">${title}</div>
+      <div class="swiper-slide__title">${title}</div>
       <div class="swiper-slide__poster">
         <img class="swiper-slide__image" src="${poster}" alt="${title} movie poster">
       </div>

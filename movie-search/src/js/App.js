@@ -16,7 +16,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const searchForm = document.querySelector('form.search');
   const searchInput = searchForm.querySelector('input');
+  const searchSpinner = document.querySelector('.search__icon_spinner');
+  const searchClear = document.querySelector('.search__icon_close');
   searchInput.focus();
+  searchInput.addEventListener('input', () => {
+    if (searchInput.value !== '') {
+      searchClear.classList.add('search__icon_visible');
+    } else {
+      searchClear.classList.remove('search__icon_visible');
+    }
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchInput.placeholder = 'Search a movie';
+    searchClear.classList.remove('search__icon_visible');
+    searchInput.focus();
+  });
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
@@ -49,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function showResults(moviesList) {
     swiperWrapper.innerHTML = '';
+    searchSpinner.setAttribute('style', 'display: none');
     moviesList.forEach((movie) => {
       const {
         title, poster, year, imdbID,
@@ -65,6 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function inputHandler(event) {
     event.preventDefault();
+    searchSpinner.setAttribute('style', 'display: inline-block');
     searchInput.placeholder = searchInput.value;
     const moviesList = await makeRequest();
     showResults(moviesList);
