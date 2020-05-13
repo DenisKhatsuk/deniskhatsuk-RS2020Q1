@@ -49,7 +49,33 @@
     height: 70px;
 
     &__image {
-      width: 137px;
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .swiper-container {
+    width: 89%;
+    padding: 0 40px;
+  }
+
+  .swiper-slide {
+    &__image {
+      height: 210px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .swiper-container {
+    width: 84%;
+    padding: 0 35px;
+  }
+
+  .swiper-slide {
+    &__image {
+      height: 210px;
     }
   }
 }

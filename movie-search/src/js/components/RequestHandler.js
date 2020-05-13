@@ -1,4 +1,4 @@
-class InputHandler {
+class RequestHandler {
   constructor() {
     this.apiKey = 'fa7b0bcf';
   }
@@ -11,9 +11,9 @@ class InputHandler {
 
     // }
     const moviesFullData = await response.json();
-    const moviesList = InputHandler.parseMovies(moviesFullData);
+    const moviesList = RequestHandler.parseMovies(moviesFullData);
     const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));
-    const movies = InputHandler.addImdbRatings(moviesList, moviesRatings);
+    const movies = RequestHandler.addImdbRatings(moviesList, moviesRatings);
     return movies;
   }
 
@@ -52,6 +52,11 @@ class InputHandler {
     const rating = movieInfo.imdbRating;
     return rating;
   }
+
+  async makeRequest(request) {
+    const moviesList = await this.getMoviesList(request);
+    return moviesList;
+  }
 }
 
-export default new InputHandler();
+export default new RequestHandler();

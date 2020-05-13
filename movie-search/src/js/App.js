@@ -6,7 +6,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import ContentBuilder from './components/ContentBuilder';
 import SwiperSlider from './components/SwiperSlider';
-import InputHandler from './components/InputHandler';
+import RequestHandler from './components/RequestHandler';
 
 window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
     searchClearButton.classList.remove('search__icon_visible');
     searchInput.focus();
   });
+
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
@@ -49,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
     breakpoints: {
       640: {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 30,
       },
       768: {
         slidesPerView: 3,
@@ -73,26 +74,19 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  async function makeRequest(request) {
-    const searchRequest = request || searchInput.value;
-    const moviesList = await InputHandler.getMoviesList(searchRequest);
-    return moviesList;
-  }
-
   async function inputHandler(event) {
     event.preventDefault();
     searchSpinnerIcon.setAttribute('style', 'display: inline-block');
     searchInput.placeholder = searchInput.value;
-    const moviesList = await makeRequest();
+    const request = searchInput.value;
+    const moviesList = await RequestHandler.makeRequest(request);
     showResults(moviesList);
   }
-
   searchForm.addEventListener('submit', inputHandler);
 
   async function initialRequest(movie) {
-    const movies = await makeRequest(movie);
+    const movies = await RequestHandler.makeRequest(movie);
     showResults(movies);
   }
-
   initialRequest('Subspecies');
 });

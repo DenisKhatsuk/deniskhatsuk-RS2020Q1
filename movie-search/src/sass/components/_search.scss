@@ -63,6 +63,34 @@
       background-color: $color-light;
       color: $color-secondary;
     }
+  }
+}
 
+@media (max-width: 991px) {
+  .search {
+    &__input {
+      width: 490px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .search {
+    &__input {
+      width: 390px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .search {
+    &__input {
+      width: 100%;
+    }
+
+    &__button {
+      padding: 5px 22px;
+      margin-top: 15px;
+    }
   }
 }
