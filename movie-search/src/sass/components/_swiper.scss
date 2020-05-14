@@ -17,10 +17,24 @@
   width: 200px;
   height: 80%;
   margin: 20px 0;
+  font-size: 1.3rem;
   text-align: center;
+
+  &__title {
+    padding: 5px 0;
+  }
+
+  &__title-link {
+    color: $color-base;
+    text-decoration: none;
+  }
 
   &__image {
     height: 220px;
+  }
+
+  &__date {
+    padding: 5px 0;
   }
 }
 

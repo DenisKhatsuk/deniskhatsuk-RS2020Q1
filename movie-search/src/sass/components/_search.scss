@@ -59,7 +59,6 @@
     }
 
     &:hover {
-      // @include shadow(4px 8px 16px, $color-shadow);
       background-color: $color-light;
       color: $color-secondary;
     }

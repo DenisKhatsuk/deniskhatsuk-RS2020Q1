@@ -70,9 +70,9 @@ window.addEventListener('DOMContentLoaded', () => {
     searchSpinnerIcon.setAttribute('style', 'display: none');
     movies.forEach((movie) => {
       const {
-        title, poster, year, imdbRating,
+        title, poster, year, imdbRating, imdbID,
       } = movie;
-      mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating));
+      mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
     });
   }
 

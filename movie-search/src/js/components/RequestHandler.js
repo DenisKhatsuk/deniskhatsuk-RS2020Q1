@@ -10,6 +10,7 @@ class RequestHandler {
     const moviesList = RequestHandler.parseMovies(moviesFullData);
     const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));
     const movies = RequestHandler.addImdbRatings(moviesList, moviesRatings);
+    console.log(movies);
     return movies;
   }
 
