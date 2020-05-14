@@ -16,6 +16,8 @@ export default class Main {
       <section class="search-wrapper">
         ${search}
       </section>
+      <section class="information">
+      </section>
       <section class="carousel">
 
       </section>

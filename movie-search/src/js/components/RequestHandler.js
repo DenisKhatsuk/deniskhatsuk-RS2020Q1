@@ -5,11 +5,7 @@ class RequestHandler {
 
   async getMoviesList(searchRequest) {
     const url = `//omdbapi.com/?s=${searchRequest}&apikey=${this.apiKey}`;
-    // try {
     const response = await fetch(url);
-    // } catch(error) {
-
-    // }
     const moviesFullData = await response.json();
     const moviesList = RequestHandler.parseMovies(moviesFullData);
     const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));

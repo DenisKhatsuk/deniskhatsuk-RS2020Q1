@@ -7,10 +7,12 @@ import Footer from './components/Footer';
 import ContentBuilder from './components/ContentBuilder';
 import SwiperSlider from './components/SwiperSlider';
 import RequestHandler from './components/RequestHandler';
+import ErrorPublisher from './components/ErrorPublisher';
 
 window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
   pageBuilder.addContentToDOM();
+  const errorPublisher = new ErrorPublisher('information');
   Main.addMinHeight();
   SwiperSlider.addSlider('carousel');
 
@@ -77,10 +79,16 @@ window.addEventListener('DOMContentLoaded', () => {
   async function inputHandler(event) {
     event.preventDefault();
     searchSpinnerIcon.setAttribute('style', 'display: inline-block');
-    searchInput.placeholder = searchInput.value;
     const request = searchInput.value;
-    const moviesList = await RequestHandler.makeRequest(request);
-    showResults(moviesList);
+    try {
+      const moviesList = await RequestHandler.makeRequest(request);
+      showResults(moviesList);
+    } catch (error) {
+      searchSpinnerIcon.setAttribute('style', 'display: none');
+      errorPublisher.publishError(`No results for ${request}`);
+      return;
+    }
+    searchInput.placeholder = searchInput.value;
   }
   searchForm.addEventListener('submit', inputHandler);
 
