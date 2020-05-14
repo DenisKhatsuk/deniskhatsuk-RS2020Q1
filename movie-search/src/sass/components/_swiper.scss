@@ -1,7 +1,6 @@
 .swiper-container {
-  width: 85%;
-  height: 350px;
-  padding: 0 45px;
+  width: 95%;
+  height: 370px;
 }
 
 .swiper-pagination-bullet-active {
@@ -14,14 +13,14 @@
 }
 
 .swiper-slide {
-  width: 200px;
-  height: 80%;
-  margin: 20px 0;
+  padding: 20px 0;
   font-size: 1.3rem;
   text-align: center;
+  background: $color-light;
+  border-radius: 10px;
 
   &__title {
-    padding: 5px 0;
+    padding: 0 0 9px;
   }
 
   &__title-link {
@@ -30,7 +29,8 @@
   }
 
   &__image {
-    height: 220px;
+    max-width: 200px;
+    max-height: 235px;
   }
 
   &__date {
@@ -40,56 +40,37 @@
 
 @media (max-width: 1199px) {
   .swiper-container {
-    width: 90%;
-    height: 300px;
+    height: 335px;
   }
 
   .swiper-slide {
-    height: 70px;
-
     &__image {
-      width: 137px;
+      max-width: 145px;
+      max-height: 190px;
     }
   }
 }
 
 @media (max-width: 1023px) {
   .swiper-container {
-    width: 90%;
-    height: 300px;
+    height: 375px;
   }
 
   .swiper-slide {
-    height: 70px;
-
     &__image {
-      width: auto;
+      max-width: 190px;
+      max-height: 245px;
     }
   }
 }
 
 @media (max-width: 991px) {
-  .swiper-container {
-    width: 89%;
-    padding: 0 40px;
-  }
 
-  .swiper-slide {
-    &__image {
-      height: 210px;
-    }
-  }
 }
 
 @media (max-width: 767px) {
   .swiper-container {
     width: 84%;
     padding: 0 35px;
-  }
-
-  .swiper-slide {
-    &__image {
-      height: 210px;
-    }
   }
 }

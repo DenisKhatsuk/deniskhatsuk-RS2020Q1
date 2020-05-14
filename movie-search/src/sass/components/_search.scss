@@ -49,7 +49,7 @@
     padding: 5px 12px;
     color: $color-light;
     background-color: $color-secondary;
-    border: 1px solid $color-light;
+    border: 1px solid $color-secondary;
     border-radius: 15px;
     cursor: pointer;
     transition: ease-in-out 0.2s;
@@ -60,6 +60,7 @@
 
     &:hover {
       background-color: $color-light;
+      border-color: $color-light;
       color: $color-secondary;
     }
   }

@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
-    spaceBetween: 30,
+    spaceBetween: 40,
     loop: true,
     loopFillGroupWithBlank: true,
     pagination: {
@@ -52,15 +52,15 @@ window.addEventListener('DOMContentLoaded', () => {
     breakpoints: {
       640: {
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
       768: {
         slidesPerView: 3,
-        spaceBetween: 40,
+        spaceBetween: 20,
       },
       1024: {
         slidesPerView: 4,
-        spaceBetween: 50,
+        spaceBetween: 20,
       },
     },
   });
