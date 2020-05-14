@@ -78,6 +78,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function inputHandler(event) {
     event.preventDefault();
+    const informationField = document.querySelector('.information');
+    informationField.innerHTML = '';
     searchSpinnerIcon.setAttribute('style', 'display: inline-block');
     const request = searchInput.value;
     try {
@@ -85,7 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
       showResults(moviesList);
     } catch (error) {
       searchSpinnerIcon.setAttribute('style', 'display: none');
-      errorPublisher.publishError(`No results for ${request}`);
+      errorPublisher.publishError(`No results for "${request}"`);
       return;
     }
     searchInput.placeholder = searchInput.value;
