@@ -18,7 +18,7 @@ export default class SwiperSlider {
   }
 
   static createSlide(title = 'N/A', poster = './src/img/no_poster.jpg', year = 'N/A', imdbRating = 'N/A', imdbID) {
-    const movieLink = `<a class="swiper-slide__title-link" href="//www.imdb.com/title/${imdbID}" target="_blank">${title}</a>`;
+    const movieLink = `<a class="swiper-slide__title-link" href="//www.imdb.com/title/${imdbID}/mediaviewer" target="_blank">${title}</a>`;
     const movieTitle = imdbID ? movieLink : title;
     const swiperSlide = `
     <div class="swiper-slide">

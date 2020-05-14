@@ -7,7 +7,7 @@
   &__input {
     width: 690px;
     padding: 5px 30px;
-    border: 2px solid $color-light;
+    border: 1px solid $color-light;
     border-radius: 10px;
 
     &:focus {
@@ -16,7 +16,8 @@
   }
 
   &__icon {
-    &_search {
+    &_search,
+    &_spinner {
       position: absolute;
       top: 7px;
       left: 7px;
@@ -24,16 +25,13 @@
     }
 
     &_spinner {
-      position: absolute;
-      top: 8px;
-      right: 88px;
       display: none;
     }
 
     &_close {
       position: absolute;
       top: 8px;
-      right: 111px;
+      right: 87px;
       display: none;
       color: $color-base;
       opacity: 0.7;
@@ -91,6 +89,12 @@
     &__button {
       padding: 5px 22px;
       margin-top: 15px;
+    }
+
+    &__icon {
+      &_close {
+        right: 12px;
+      }
     }
   }
 }

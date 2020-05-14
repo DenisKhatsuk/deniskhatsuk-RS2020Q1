@@ -6,7 +6,7 @@ export default class ErrorPublisher {
   publishError(error) {
     const errorMessage = document.createElement('span');
     errorMessage.classList.add('error');
-    errorMessage.textContent = error;
-    this.parent.appendChild(errorMessage);
+    errorMessage.textContent = `${error}. `;
+    this.parent.prepend(errorMessage);
   }
 }

@@ -64,13 +64,19 @@
   }
 }
 
-@media (max-width: 991px) {
-
-}
-
 @media (max-width: 767px) {
   .swiper-container {
     width: 84%;
     padding: 0 35px;
   }
+}
+
+@media (max-width: 350px) {
+  .swiper-slide {
+    &__image {
+      max-width: 150px;
+      max-height: 200px;
+    }
+  }
+
 }

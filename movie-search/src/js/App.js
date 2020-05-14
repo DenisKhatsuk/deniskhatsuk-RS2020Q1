@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const searchForm = document.querySelector('form.search');
   const searchInput = searchForm.querySelector('input');
+  const searchSearchIcon = document.querySelector('.search__icon_search');
   const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
   const searchClearButton = document.querySelector('.search__icon_close');
   searchInput.focus();
@@ -67,6 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function showResults(movies) {
     swiperWrapper.innerHTML = '';
+    searchSearchIcon.setAttribute('style', 'display: inline-block');
     searchSpinnerIcon.setAttribute('style', 'display: none');
     movies.forEach((movie) => {
       const {
@@ -80,6 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const informationField = document.querySelector('.information');
     informationField.innerHTML = '';
+    searchSearchIcon.setAttribute('style', 'display: none');
     searchSpinnerIcon.setAttribute('style', 'display: inline-block');
     const request = searchInput.value;
     try {
@@ -87,6 +90,7 @@ window.addEventListener('DOMContentLoaded', () => {
       showResults(moviesList);
     } catch (error) {
       searchSpinnerIcon.setAttribute('style', 'display: none');
+      searchSearchIcon.setAttribute('style', 'display: inline-block');
       errorPublisher.publishError(`No results for "${request}"`);
       return;
     }

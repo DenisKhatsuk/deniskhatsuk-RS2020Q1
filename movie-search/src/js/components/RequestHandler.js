@@ -7,10 +7,17 @@ class RequestHandler {
     const url = `//omdbapi.com/?s=${searchRequest}&apikey=${this.apiKey}`;
     const response = await fetch(url);
     const moviesFullData = await response.json();
+    if (JSON.stringify(moviesFullData.Error)) {
+      const error = `Server replied with: ${JSON.stringify(moviesFullData.Error)}`;
+      const errorMessage = document.createElement('span');
+      const parent = document.querySelector('.information');
+      errorMessage.classList.add('error');
+      errorMessage.textContent = error;
+      parent.appendChild(errorMessage);
+    }
     const moviesList = RequestHandler.parseMovies(moviesFullData);
     const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));
     const movies = RequestHandler.addImdbRatings(moviesList, moviesRatings);
-    console.log(movies);
     return movies;
   }
 
