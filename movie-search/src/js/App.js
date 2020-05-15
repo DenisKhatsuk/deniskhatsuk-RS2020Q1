@@ -94,7 +94,8 @@ window.addEventListener('DOMContentLoaded', () => {
           slide.classList.remove('swiper-slide_loading');
         });
         slideImage.addEventListener('error', () => {
-          // alert('error');
+          slideImage.setAttribute('src', './src/img/no_poster.jpg');
+          slide.classList.remove('swiper-slide_loading');
         });
       }
     });

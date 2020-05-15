@@ -22,7 +22,7 @@
   &__curtain {
     position: absolute;
     top: 0;
-    opacity: 0;
+    display: none;
     width: 100%;
     height: 100%;
     background-color: white;
@@ -51,8 +51,12 @@
 
 .swiper-slide_loading {
   .swiper-slide__curtain {
-    opacity: 1;
+    display: block;
   }
+}
+
+.swiper-lazy-preloader {
+  color: $color-secondary;
 }
 
 @media (max-width: 1199px) {
