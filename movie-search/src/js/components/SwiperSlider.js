@@ -21,13 +21,16 @@ export default class SwiperSlider {
     const movieLink = `<a class="swiper-slide__title-link" href="//www.imdb.com/title/${imdbID}/mediaviewer" target="_blank">${title}</a>`;
     const movieTitle = imdbID ? movieLink : title;
     const swiperSlide = `
-    <div class="swiper-slide">
+    <div class="swiper-slide swiper-slide_loading">
       <div class="swiper-slide__title">${movieTitle}</div>
       <div class="swiper-slide__poster">
         <img class="swiper-slide__image" src="${poster}" alt="${title} movie poster">
       </div>
       <div class="swiper-slide__date">${year}</div>
       <div class="swiper-slide__imdb">IMDB: ${imdbRating}</div>
+      <div class="swiper-slide__curtain">
+        <div class="swiper-lazy-preloader"></div>
+      </div>
     </div>
     `;
 

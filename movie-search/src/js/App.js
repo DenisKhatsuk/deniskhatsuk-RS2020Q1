@@ -40,8 +40,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
     spaceBetween: 40,
-    loop: true,
-    loopFillGroupWithBlank: true,
+    preloadImages: true,
+    updateOnImagesReady: true,
+    watchSlidesProgress: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -64,6 +65,11 @@ window.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 20,
       },
     },
+    on: {
+      reachEnd: () => {
+        // console.log('reach End');
+      },
+    },
   });
 
   function showResults(movies) {
@@ -75,6 +81,22 @@ window.addEventListener('DOMContentLoaded', () => {
         title, poster, year, imdbRating, imdbID,
       } = movie;
       mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
+    });
+    const newSlides = swiperWrapper.querySelectorAll('.swiper-slide_loading');
+
+    newSlides.forEach((slide) => {
+      const slideImage = slide.querySelector('.swiper-slide__image');
+
+      if (slideImage.complete) {
+        slide.classList.remove('swiper-slide_loading');
+      } else {
+        slideImage.addEventListener('load', () => {
+          slide.classList.remove('swiper-slide_loading');
+        });
+        slideImage.addEventListener('error', () => {
+          // alert('error');
+        });
+      }
     });
   }
 
