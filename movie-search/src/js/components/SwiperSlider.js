@@ -29,7 +29,7 @@ export default class SwiperSlider {
       <div class="swiper-slide__date">${year}</div>
       <div class="swiper-slide__imdb">IMDB: ${imdbRating}</div>
       <div class="swiper-slide__curtain">
-        <div class="swiper-lazy-preloader"></div>
+        <i class="swiper-slide__spinner fas fa-spinner fa-spin"></i>
       </div>
     </div>
     `;
