@@ -43,10 +43,24 @@ module.exports = (env, options) => {
           ],
         },
         {
-          test: /\.(png|jpe?g|svg|gif|woff|woff2|eot|ttf)(\?.*$|$)/i,
+          test: /\.(png|jpe?g|svg|gif)$/i,
           use: [
             {
               loader: 'file-loader',
+              options: {
+                outputPath: 'src/img/',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf)(\?.*$|$)/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: 'src/fonts/',
+              },
             },
           ],
         },
