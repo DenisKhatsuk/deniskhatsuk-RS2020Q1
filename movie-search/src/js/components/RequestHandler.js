@@ -1,11 +1,12 @@
 class RequestHandler {
   constructor() {
-    this.apiKey = 'fa7b0bcf';
+    this.omdbApiKey = 'fa7b0bcf';
+    this.translateApiKey = 'trnsl.1.1.20200516T113817Z.99caae562194b6be.bb74a28df0fa9adf9f1850fd78bfe2940dab3924';
   }
 
   async getMoviesList(searchRequest, resultsPage) {
     const page = resultsPage ? `&page=${resultsPage}` : '';
-    const url = `//omdbapi.com/?s=${searchRequest}${page}&apikey=${this.apiKey}`;
+    const url = `//omdbapi.com/?s=${searchRequest}${page}&apikey=${this.omdbApiKey}`;
     const response = await fetch(url);
     const moviesFullData = await response.json();
     if (JSON.stringify(moviesFullData.Error)) {
@@ -51,7 +52,7 @@ class RequestHandler {
   }
 
   async getImdbRating(movieID) {
-    const url = `//omdbapi.com/?i=${movieID}&apikey=${this.apiKey}`;
+    const url = `//omdbapi.com/?i=${movieID}&apikey=${this.omdbApiKey}`;
     const response = await fetch(url);
     const movieInfo = await response.json();
     const rating = movieInfo.imdbRating;
@@ -61,6 +62,13 @@ class RequestHandler {
   async makeRequest(request, page) {
     const moviesList = await this.getMoviesList(request, page);
     return moviesList;
+  }
+
+  async translateRequestFromRussian(request) {
+    const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${this.translateApiKey}&text=${request}&lang=ru-en`;
+    const response = await fetch(url);
+    const translatedRequest = await response.json();
+    return translatedRequest.text[0];
   }
 }
 

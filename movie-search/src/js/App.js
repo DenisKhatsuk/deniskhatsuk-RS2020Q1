@@ -7,12 +7,12 @@ import Footer from './components/Footer';
 import ContentBuilder from './components/ContentBuilder';
 import SwiperSlider from './components/SwiperSlider';
 import RequestHandler from './components/RequestHandler';
-import ErrorPublisher from './components/ErrorPublisher';
+import InfoPublisher from './components/InfoPublisher';
 
 window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
   pageBuilder.addContentToDOM();
-  const errorPublisher = new ErrorPublisher('information');
+  const infoPublisher = new InfoPublisher('information');
   Main.addMinHeight();
   SwiperSlider.addSlider('carousel');
 
@@ -102,7 +102,10 @@ window.addEventListener('DOMContentLoaded', () => {
     informationField.innerHTML = '';
     searchSearchIcon.setAttribute('style', 'display: none');
     searchSpinnerIcon.setAttribute('style', 'display: inline-block');
-    const request = searchInput.value;
+    const searchInputValue = searchInput.value;
+    const requestLanguage = searchInputValue.match(/[А-Яё]$/i) ? 'RU' : 'ENG';
+    const request = requestLanguage === 'RU' ? await RequestHandler.translateRequestFromRussian(searchInputValue) : searchInputValue;
+    if (requestLanguage === 'RU') infoPublisher.publishInfo(`Showing results for "${request}"`);
     try {
       const moviesList = await RequestHandler.makeRequest(request);
       swiperWrapper.innerHTML = '';
@@ -110,7 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       searchSpinnerIcon.setAttribute('style', 'display: none');
       searchSearchIcon.setAttribute('style', 'display: inline-block');
-      errorPublisher.publishError(`No results for "${request}"`);
+      infoPublisher.publishInfo(`No results for "${request}"`);
       return;
     }
     swiperWrapper.setAttribute('data-request', request);
