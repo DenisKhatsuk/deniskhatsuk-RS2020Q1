@@ -3,8 +3,9 @@ class RequestHandler {
     this.apiKey = 'fa7b0bcf';
   }
 
-  async getMoviesList(searchRequest) {
-    const url = `//omdbapi.com/?s=${searchRequest}&apikey=${this.apiKey}`;
+  async getMoviesList(searchRequest, resultsPage) {
+    const page = resultsPage ? `&page=${resultsPage}` : '';
+    const url = `//omdbapi.com/?s=${searchRequest}${page}&apikey=${this.apiKey}`;
     const response = await fetch(url);
     const moviesFullData = await response.json();
     if (JSON.stringify(moviesFullData.Error)) {
@@ -57,8 +58,8 @@ class RequestHandler {
     return rating;
   }
 
-  async makeRequest(request) {
-    const moviesList = await this.getMoviesList(request);
+  async makeRequest(request, page) {
+    const moviesList = await this.getMoviesList(request, page);
     return moviesList;
   }
 }

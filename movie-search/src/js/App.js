@@ -41,11 +41,12 @@ window.addEventListener('DOMContentLoaded', () => {
     slidesPerView: 1,
     spaceBetween: 40,
     preloadImages: true,
-    updateOnImagesReady: true,
     watchSlidesProgress: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
+      dynamicBullets: true,
+      dynamicMainBullets: 4,
     },
     navigation: {
       nextEl: '.swiper-button-next',
@@ -65,15 +66,9 @@ window.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 20,
       },
     },
-    on: {
-      reachEnd: () => {
-        // console.log('reach End');
-      },
-    },
   });
 
   function showResults(movies) {
-    swiperWrapper.innerHTML = '';
     searchSearchIcon.setAttribute('style', 'display: inline-block');
     searchSpinnerIcon.setAttribute('style', 'display: none');
     movies.forEach((movie) => {
@@ -110,6 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const request = searchInput.value;
     try {
       const moviesList = await RequestHandler.makeRequest(request);
+      swiperWrapper.innerHTML = '';
       showResults(moviesList);
     } catch (error) {
       searchSpinnerIcon.setAttribute('style', 'display: none');
@@ -117,6 +113,8 @@ window.addEventListener('DOMContentLoaded', () => {
       errorPublisher.publishError(`No results for "${request}"`);
       return;
     }
+    swiperWrapper.setAttribute('data-request', request);
+    swiperWrapper.setAttribute('data-page', '1');
     searchInput.placeholder = searchInput.value;
   }
   searchForm.addEventListener('submit', inputHandler);
@@ -126,4 +124,15 @@ window.addEventListener('DOMContentLoaded', () => {
     showResults(movies);
   }
   initialRequest('Subspecies');
+
+  mySwiper.on('reachEnd', async () => {
+    const request = swiperWrapper.getAttribute('data-request');
+    let page = swiperWrapper.getAttribute('data-page');
+    page = +page + 1;
+    if (request !== null) {
+      const moviesList = await RequestHandler.makeRequest(request, page);
+      showResults(moviesList);
+      swiperWrapper.setAttribute('data-page', page);
+    }
+  });
 });
