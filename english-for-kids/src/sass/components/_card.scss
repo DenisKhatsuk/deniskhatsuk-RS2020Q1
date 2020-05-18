@@ -1,0 +1,128 @@
+.card {
+  position: relative;
+  width: 30%;
+  height: 319px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  @include transition(0.2s, ease-in-out);
+
+  &:hover {
+    @include shadow(0 8px 17px 0, 0.2, 0 6px 20px 0, 0.19);
+  }
+
+  &_disabled {
+    opacity: 0.5;
+  }
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transition: 0.4s;
+
+  &_back {
+    transform: rotateY(180deg);
+  }
+}
+
+.card__translated {
+  .card__face {
+    &_front {
+      transform: rotateY(180deg);
+    }
+
+    &_back {
+      transform: rotateY(0deg);  
+    }
+  }
+}
+
+.card-body {
+  position: relative;
+  @include transition(0.2s, ease-in-out);
+}
+
+.card-btn {
+  position: absolute;
+  right: 10px;
+  top: -35px;
+  background-color: $color-primary;
+}
+
+.card-title {
+  position: relative;
+  padding-top: 17px;
+  text-align: center;
+}
+
+.btn-floating {
+  z-index: 1;
+  display: inline-block;
+  padding: 0;
+  margin: 10px;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  @include shadow(0 5px 11px 0, 0.18, 0 4px 15px 0, 0.15);
+  @include transition(0.2s, ease-in-out);
+  width: 47px;
+  height: 47px;
+
+  i {
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 47px;
+  }
+
+  &:hover {
+    @include shadow(0 8px 17px 0, 0.2, 0 6px 20px 0, 0.19);
+  }
+
+  &:before {
+    border-radius: 0
+  }
+}
+
+.card__back {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 1199px) {
+  .card {
+    height: 285px;
+  }
+}
+
+@media (max-width: 991px) {
+  .card {
+    width: 45%;
+    height: 319px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 575px) {
+  .card {
+    width: 320px;
+    height: 319px;
+  }
+}
+
+@media (max-width: 370px) {
+  .card {
+    height: 280px;
+  }
+}

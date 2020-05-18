@@ -1,0 +1,30 @@
+.menu {
+  position: relative;
+  top: 150px;
+  margin-left: 22px;
+  text-align: left;
+  font-size: 22px;
+}
+
+.menu__item {
+  list-style: none;
+  padding-bottom: 15px;
+}
+
+.menu__link {
+  color: $color-primary;
+  &:visited {
+    color: $color-primary;
+  }
+  &:hover,
+  &:active {
+    color: $color-active;
+  }
+
+  &_current {
+    color: $color-active;
+    &:visited {
+      color: $color-active;
+    }
+  }
+}

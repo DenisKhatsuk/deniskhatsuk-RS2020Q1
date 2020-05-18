@@ -1,0 +1,43 @@
+.header__container {
+  position: relative;
+  text-align: center;
+}
+
+.header__logo {
+  padding: 10px 0;
+}
+
+.header__menu-icon {
+  position: absolute;
+  top: 22px;
+  z-index: 3;
+}
+
+.header__aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  z-index:2;
+  transition: all 0.4s;
+}
+
+.header__aside_open {
+  visibility: visible;
+}
+
+.header__toggle {
+  position: absolute;
+  top: 18px;
+  right: 27px;
+  width: 12.25em;
+  height: 5.5em;
+  margin: 0;
+  font-size: 7px;
+}
+
+@media (max-width: 450px) { 
+  .header__toggle {
+    top: 85px;
+  }
+}

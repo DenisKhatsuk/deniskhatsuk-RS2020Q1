@@ -1,0 +1,19 @@
+@mixin transition($time, $animation, $settings: all) {
+  -webkit-transition: $time $animation;
+  -moz-transition: $time $animation;
+  -o-transition: $time $animation;
+  transition: $time $animation;
+}
+
+@mixin transform($type) {
+  -webkit-transform: $type;
+  -moz-transform: $type;
+  -o-transform: $type;
+  transform: $type;
+}
+
+@mixin shadow($shadow, $opacity, $shadow2, $opacity2) {
+  -webkit-box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+  -moz-box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+  box-shadow: $shadow rgba(0,0,0,$opacity), $shadow2 rgba(0,0,0,$opacity2);
+}
