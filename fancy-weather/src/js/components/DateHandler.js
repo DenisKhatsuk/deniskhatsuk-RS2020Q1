@@ -2,7 +2,6 @@ function getCurrentDate(language = 'en-US') {
   const DATE = new Date();
   const options = {
     weekday: 'long',
-    year: 'numeric',
     month: 'long',
     day: 'numeric',
     hour: '2-digit',
