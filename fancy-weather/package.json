@@ -14,7 +14,8 @@
   "author": "Dzianis Khatsuk",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0"
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
