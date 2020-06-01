@@ -2,6 +2,7 @@ import '../sass/styles.scss';
 
 import Background from './components/BackgroundHandler';
 import Date from './components/DateHandler';
+import Location from './components/LocationHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const backgroundImageURL = await Background.getImageURL();
@@ -12,6 +13,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   });
 
   const dateField = document.querySelector('.location__date');
+  const placeField = document.querySelector('.location__place');
+  const { city, country, loc } = await Location.getLocation();
+  placeField.textContent = `${city}, ${country}`;
   dateField.textContent = Date.getCurrentDate();
   setInterval(() => {
     dateField.textContent = Date.getCurrentDate();
