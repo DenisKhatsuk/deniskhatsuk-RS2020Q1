@@ -3,9 +3,8 @@ const REQUEST_URL = `https://api.unsplash.com/photos/random?orientation=landscap
 
 async function getImageURL() {
   const response = await fetch(REQUEST_URL);
-  const imageData = await response.json();
-  const imageURL = imageData.urls.regular;
-  return imageURL;
+  const { urls: { regular } } = await response.json();
+  return regular;
 }
 
 export default {

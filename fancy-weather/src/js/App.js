@@ -3,6 +3,7 @@ import '../sass/styles.scss';
 import Background from './components/BackgroundHandler';
 import Date from './components/DateHandler';
 import Location from './components/LocationHandler';
+import MapHandler from './components/MapHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const backgroundImageURL = await Background.getImageURL();
@@ -20,4 +21,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   setInterval(() => {
     dateField.textContent = Date.getCurrentDate();
   }, 1000);
+
+  MapHandler.init('.main');
 });
