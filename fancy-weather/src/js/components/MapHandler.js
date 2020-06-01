@@ -8,20 +8,21 @@ class MapHandler {
     this.latitude = '55.665957';
   }
 
-  init(parentClass = 'body') {
+  init(parentClass = 'body', lng = 12.550343, lat = 55.665957) {
     const parent = document.querySelector(`${parentClass}`);
     MapHandler.addMapContainer(parent);
     mapboxgl.accessToken = API_KEY;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/deniskhatsuk/ckawq5ktq3qqs1ikera49v01n',
-      center: [this.longitude, this.latitude], // starting position [lng, lat]
+      center: [lng, lat], // starting position [lng, lat]
       zoom: 10,
     });
     // eslint-disable-next-line
     const marker = new mapboxgl.Marker()
-      .setLngLat([this.longitude, this.latitude])
+      .setLngLat([lng, lat])
       .addTo(map);
+    return this;
   }
 
   static addMapContainer(parent) {

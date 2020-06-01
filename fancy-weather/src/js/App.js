@@ -16,12 +16,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   LocationHandler.init('.main');
   const dateField = document.querySelector('.location__date');
   const placeField = document.querySelector('.location__place');
-  const { city, country /* , loc */ } = await LocationHandler.getLocation();
+  const { city, country, loc } = await LocationHandler.getLocation();
+  const locationCoordinates = loc.split(',');
+  const [lat, lng] = locationCoordinates;
   placeField.textContent = `${city}, ${country}`;
   dateField.textContent = Date.getCurrentDate();
   setInterval(() => {
     dateField.textContent = Date.getCurrentDate();
   }, 1000);
 
-  MapHandler.init('.main');
+  MapHandler.init('.main', lng, lat);
 });
