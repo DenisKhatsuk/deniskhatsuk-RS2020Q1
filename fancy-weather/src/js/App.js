@@ -2,7 +2,7 @@ import '../sass/styles.scss';
 
 import Background from './components/BackgroundHandler';
 import Date from './components/DateHandler';
-import Location from './components/LocationHandler';
+import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -13,9 +13,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     document.body.style.backgroundImage = `url(${backgroundImage.src})`;
   });
 
+  LocationHandler.init('.main');
   const dateField = document.querySelector('.location__date');
   const placeField = document.querySelector('.location__place');
-  const { city, country, loc } = await Location.getLocation();
+  const { city, country /* , loc */ } = await LocationHandler.getLocation();
   placeField.textContent = `${city}, ${country}`;
   dateField.textContent = Date.getCurrentDate();
   setInterval(() => {
