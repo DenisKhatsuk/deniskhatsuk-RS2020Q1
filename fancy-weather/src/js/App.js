@@ -6,6 +6,7 @@ import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 import ForecastHandler from './components/ForecastHandler';
 import SearchHandler from './components/SearchHandler';
+import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const backgroundImageURL = await Background.getImageURL();
@@ -29,7 +30,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     dateField.textContent = Date.getCurrentDate();
   }, 1000);
 
-  MapHandler.init('.main > .container', lng, lat);
+  MapHandler.addMapContainer('.main > .container');
+  MapHandler.init(lat, lng);
 
   ForecastHandler.init('.main > .container');
   const weather = await ForecastHandler.getForecast(lat, lng);
@@ -38,9 +40,18 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   const searchForm = document.querySelector('.search');
   const searchInput = document.querySelector('.search__input');
-  searchForm.addEventListener('submit', (event) => {
+  searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const searchInputValue = searchInput.value;
-    console.log(searchInputValue);
+    const {
+      formatted,
+      lat: latd,
+      lng: long,
+    } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
+    placeField.textContent = `${formatted}`;
+    MapHandler.init(latd, long);
+    const requestedWeather = await ForecastHandler.getForecast(latd, long);
+    ForecastHandler.publishTodayWeather('.forecast__today', requestedWeather[1]);
+    ForecastHandler.publishForecast('.forecast__upcoming', [requestedWeather[2], requestedWeather[3], requestedWeather[4]]);
   });
 });

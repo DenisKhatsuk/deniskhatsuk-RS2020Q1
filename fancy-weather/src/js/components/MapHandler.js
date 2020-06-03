@@ -3,9 +3,7 @@ import mapboxgl from 'mapbox-gl';
 const API_KEY = 'pk.eyJ1IjoiZGVuaXNraGF0c3VrIiwiYSI6ImNrYXdjd2EzeTAzNGYycm12Y2JnaTlnbXIifQ.PfUx8xzMFLiDiQumqMpAFg';
 
 class MapHandler {
-  init(parentClass = 'body', lng = 12.550343, lat = 55.665957) {
-    const parent = document.querySelector(`${parentClass}`);
-    MapHandler.addMapContainer(parent);
+  init(lat = 55.665957, lng = 12.550343) {
     mapboxgl.accessToken = API_KEY;
     const map = new mapboxgl.Map({
       container: 'map',
@@ -20,11 +18,13 @@ class MapHandler {
     return this;
   }
 
-  static addMapContainer(parent) {
+  addMapContainer(parentElement) {
+    const parent = document.querySelector(`${parentElement}`);
     const mapSection = document.createElement('section');
     mapSection.classList.add('map');
     mapSection.setAttribute('id', 'map');
     parent.append(mapSection);
+    return this;
   }
 }
 
