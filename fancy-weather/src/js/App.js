@@ -5,6 +5,7 @@ import Date from './components/DateHandler';
 import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 import ForecastHandler from './components/ForecastHandler';
+import SearchHandler from './components/SearchHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const backgroundImageURL = await Background.getImageURL();
@@ -13,6 +14,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   backgroundImage.addEventListener('load', () => {
     document.body.style.backgroundImage = `linear-gradient(0deg, rgba(0,0,0,1) 7%, rgba(0,0,0,0.19) 27%), url(${backgroundImage.src})`;
   });
+
+  SearchHandler.publishSearchField('.main > .container');
 
   LocationHandler.init('.main > .container');
   const dateField = document.querySelector('.location__date');
@@ -32,4 +35,12 @@ window.addEventListener('DOMContentLoaded', async () => {
   const weather = await ForecastHandler.getForecast(lat, lng);
   ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
   ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
+
+  const searchForm = document.querySelector('.search');
+  const searchInput = document.querySelector('.search__input');
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const searchInputValue = searchInput.value;
+    console.log(searchInputValue);
+  });
 });
