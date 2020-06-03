@@ -36,16 +36,19 @@ class ForecastHandler {
       temp,
       feels_like, /* eslint-disable-line */
       humidity,
+      wind_speed, /* eslint-disable-line */
       description,
     } = todayWeather;
     const todayDate = Date.getShortDate(dateUnix);
     const temperature = Math.round(temp);
     const feels = Math.round(feels_like);
+    const wind = Math.round(wind_speed);
 
     todayWeatherContainer.textContent = `
       Date: ${todayDate},
       Temperature: ${temperature}°C,
       Feels like: ${feels}°C,
+      Wind: ${wind}m/s,
       Humidity: ${humidity}%,
       ${description}`;
     return this;
@@ -117,6 +120,7 @@ class ForecastHandler {
         temp,
         feels_like, /* eslint-disable-line */
         humidity,
+        wind_speed, /* eslint-disable-line */
         weather: [
           {
             description,
@@ -172,6 +176,7 @@ class ForecastHandler {
         temp,
         feels_like,
         humidity,
+        wind_speed,
         description,
       },
       {
