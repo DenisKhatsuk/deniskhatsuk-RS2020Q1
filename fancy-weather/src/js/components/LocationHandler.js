@@ -23,10 +23,8 @@ class LocationHandler {
 
   async getLocation() {
     const response = await fetch(this.REQUEST_URL);
-    const locationData = response.json();
-    return locationData;
+    return response.json();
   }
 }
-
 
 export default new LocationHandler();

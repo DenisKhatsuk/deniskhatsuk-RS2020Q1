@@ -1,11 +1,12 @@
 function getCurrentDate(language = 'en-US') {
   const DATE = new Date();
   const options = {
-    weekday: 'long',
-    month: 'long',
+    weekday: 'short',
+    month: 'short',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
+    // second: '2-digit',
   };
   return DATE.toLocaleString(language, options);
 }
