@@ -28,5 +28,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   MapHandler.init('.main > .container', lng, lat);
 
-  console.log(await ForecastHandler.getForecast('Grodno,BY'));
+  ForecastHandler.init('.main > .container');
+  const weather = await ForecastHandler.getForecast(lat, lng);
+  ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
+  ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
 });

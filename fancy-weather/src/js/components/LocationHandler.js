@@ -5,8 +5,8 @@ class LocationHandler {
     this.REQUEST_URL = `https://ipinfo.io/json?token=${API_KEY}`;
   }
 
-  init(parentClass = 'body') {
-    const parent = document.querySelector(`${parentClass}`);
+  init(parentSelector = 'body') {
+    const parent = document.querySelector(`${parentSelector}`);
     LocationHandler.addLocationContainer(parent);
     return this;
   }

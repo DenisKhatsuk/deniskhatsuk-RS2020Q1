@@ -11,6 +11,18 @@ function getCurrentDate(language = 'en-US') {
   return DATE.toLocaleString(language, options);
 }
 
+function getShortDate(dateUnix, language = 'en-US') {
+  const dateInMs = dateUnix * 1000;
+  const DATE = new Date(dateInMs);
+  const options = {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  };
+  return DATE.toLocaleString(language, options);
+}
+
 export default {
   getCurrentDate,
+  getShortDate,
 };
