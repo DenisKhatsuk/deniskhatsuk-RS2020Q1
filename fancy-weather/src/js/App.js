@@ -9,12 +9,7 @@ import SearchHandler from './components/SearchHandler';
 import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  const backgroundImageURL = await Background.getImageURL();
-  const backgroundImage = new Image();
-  backgroundImage.src = backgroundImageURL;
-  backgroundImage.addEventListener('load', () => {
-    document.body.style.backgroundImage = `linear-gradient(0deg, rgba(0,0,0,1) 7%, rgba(0,0,0,0.19) 27%), url(${backgroundImage.src})`;
-  });
+  Background.setBackgroundImage();
 
   SearchHandler.publishSearchField('.main > .container');
 
