@@ -22,9 +22,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   MapHandler.init(userLat, userLng);
 
   ForecastHandler.init('.main > .container');
-  const weather = await ForecastHandler.getForecast(userLat, userLng);
-  ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
-  ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
+
+  async function addWeatherToPage(latitude, longitude) {
+    const weather = await ForecastHandler.getForecast(latitude, longitude);
+    ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
+    ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
+  }
+
+  addWeatherToPage(userLat, userLng);
 
   const searchForm = document.querySelector('.search');
   const searchInput = document.querySelector('.search__input');
@@ -39,8 +44,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
     placeField.textContent = `${formatted}`;
     MapHandler.init(lat, lng);
-    const requestedWeather = await ForecastHandler.getForecast(lat, lng);
-    ForecastHandler.publishTodayWeather('.forecast__today', requestedWeather[1]);
-    ForecastHandler.publishForecast('.forecast__upcoming', [requestedWeather[2], requestedWeather[3], requestedWeather[4]]);
+    addWeatherToPage(lat, lng);
   });
 });
