@@ -1,3 +1,5 @@
+import Date from './DateHandler';
+
 const API_KEY = '9a5f3199e9ff19';
 
 class LocationHandler {
@@ -19,6 +21,17 @@ class LocationHandler {
       <div class="location__date"></div>
     `;
     parent.append(locationSection);
+  }
+
+  async publishLocationData() {
+    const dateField = document.querySelector('.location__date');
+    const placeField = document.querySelector('.location__place');
+    const { city, country } = await this.getLocation();
+    placeField.textContent = `${city}, ${country}`;
+    dateField.textContent = Date.getCurrentDate();
+    setInterval(() => {
+      dateField.textContent = Date.getCurrentDate();
+    }, 1000);
   }
 
   async getLocation() {
