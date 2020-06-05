@@ -12,7 +12,9 @@ function buildMain() {
   const main = document.createElement('main');
   main.classList.add('main');
   main.innerHTML = `
-    <div class="container">
+    <div class="main__container container">
+      <div class="main__weather"></div>
+      <div class="main__map"></div>
     </div>
   `;
   document.body.append(main);

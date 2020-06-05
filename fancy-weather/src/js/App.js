@@ -20,16 +20,16 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   SearchHandler.publishSearchField('.header > .container');
 
-  LocationHandler.init('.main > .container');
+  LocationHandler.init('.main__weather');
   LocationHandler.publishLocationData();
   const { loc } = await LocationHandler.getLocation();
   const locationCoordinates = loc.split(',');
   const [userLat, userLng] = locationCoordinates;
 
-  MapHandler.addMapContainer('.main > .container');
+  MapHandler.addMapContainer('.main__map');
   MapHandler.init(userLat, userLng);
 
-  ForecastHandler.init('.main > .container');
+  ForecastHandler.init('.main__weather');
 
   async function addWeatherToPage(latitude, longitude) {
     const weather = await ForecastHandler.getForecast(latitude, longitude);

@@ -6,7 +6,7 @@ function getCurrentDate(language = 'en-US') {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    // second: '2-digit',
+    second: '2-digit',
   };
   return DATE.toLocaleString(language, options);
 }

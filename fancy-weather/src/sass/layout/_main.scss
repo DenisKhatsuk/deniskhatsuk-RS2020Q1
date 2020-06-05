@@ -2,4 +2,19 @@
   width: 100%;
   height: 100%;
   font-size: 3rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__weather {
+    width: 60%;
+  }
+
+  &__map {
+    display: flex;
+    justify-content: center;
+    width: 37%;
+  }
 }
