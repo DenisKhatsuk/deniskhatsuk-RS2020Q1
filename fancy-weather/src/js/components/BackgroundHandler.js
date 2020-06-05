@@ -12,7 +12,7 @@ async function setBackgroundImage() {
   const backgroundImage = new Image();
   backgroundImage.src = backgroundImageURL;
   backgroundImage.addEventListener('load', () => {
-    document.body.style.backgroundImage = `linear-gradient(0deg, rgba(0,0,0,1) 7%, rgba(0,0,0,0.19) 27%), url(${backgroundImage.src})`;
+    document.body.style.backgroundImage = `linear-gradient(0deg, rgba(0,0,0,1) 7%, rgba(0,0,0,0.4) 27%), url(${backgroundImage.src})`;
   });
 }
 

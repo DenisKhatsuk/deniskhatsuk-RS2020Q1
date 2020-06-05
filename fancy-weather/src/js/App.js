@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   MarkupBuilder.buildHeader();
   MarkupBuilder.buildMain();
 
-  SearchHandler.publishSearchField('.main > .container');
+  SearchHandler.publishSearchField('.header > .container');
 
   LocationHandler.init('.main > .container');
   LocationHandler.publishLocationData();
@@ -41,6 +41,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     event.preventDefault();
     const placeField = document.querySelector('.location__place');
     const searchInputValue = searchInput.value;
+    searchInput.value = '';
     const {
       formatted,
       lat,

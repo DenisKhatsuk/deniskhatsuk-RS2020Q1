@@ -2,8 +2,9 @@ function buildHeader() {
   const header = document.createElement('header');
   header.classList.add('header');
   header.innerHTML = `
-    <div class="header__control"></div>
-    <div class="header__search"></div>
+    <div class="container header__container">
+      <div class="header__control"></div>
+    </div>
   `;
   document.body.append(header);
 }
