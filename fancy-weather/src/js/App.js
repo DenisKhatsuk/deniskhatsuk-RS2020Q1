@@ -2,10 +2,11 @@ import '../sass/styles.scss';
 
 import Background from './components/BackgroundHandler';
 import MarkupBuilder from './components/MarkupBuilder';
+import ControlHandler from './components/ControlHandler';
+import SearchHandler from './components/SearchHandler';
 import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 import ForecastHandler from './components/ForecastHandler';
-import SearchHandler from './components/SearchHandler';
 import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -13,6 +14,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   MarkupBuilder.buildHeader();
   MarkupBuilder.buildMain();
+
+  ControlHandler.publishControlBlock('.header > .container');
+  ControlHandler.startControlFunctions();
 
   SearchHandler.publishSearchField('.header > .container');
 

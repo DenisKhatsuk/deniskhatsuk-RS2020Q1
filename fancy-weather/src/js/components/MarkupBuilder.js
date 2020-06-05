@@ -3,7 +3,6 @@ function buildHeader() {
   header.classList.add('header');
   header.innerHTML = `
     <div class="container header__container">
-      <div class="header__control"></div>
     </div>
   `;
   document.body.append(header);

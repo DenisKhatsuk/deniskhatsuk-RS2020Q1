@@ -1,10 +1,10 @@
 class SearchHandler {
   static createSearchMarkup() {
     const searchMarkup = `
-    <form class="search" autocomplete="off">
-      <input class="search__input" type="text" name="search" id="search" placeholder="Search city or ZIP">
-      <button class="search__button" type="submit" id="search__button">Search</button>
-    </form>
+      <form class="search" autocomplete="off">
+        <input class="search__input" type="text" name="search" id="search" placeholder="Search city or ZIP">
+        <button class="search__button" type="submit" id="search__button">Search</button>
+      </form>
     `;
     return searchMarkup;
   }

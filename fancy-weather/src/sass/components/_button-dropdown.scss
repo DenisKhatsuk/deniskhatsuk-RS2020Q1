@@ -1,0 +1,62 @@
+.button-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__button {
+    width: 71px;
+    height: 44px;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: bold;
+    color: $color-text;
+    background-color: $color-background-dark;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &_current {
+      background: $color-background-light url("../../src/img/control/arrow-down.svg") no-repeat 77% 52%;
+      border-radius: 5px;
+    }
+
+    &_text {
+      padding: 1px 18px 0 0;
+    }
+  }
+
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0 0 5px 5px;
+    @include transition(height, 1s);
+
+    .button-dropdown__button {
+      background-color: $color-background-dark;
+      &_selected,
+      &:hover {
+        background: $color-background-light;
+      }
+    }
+  }
+
+  &.show {
+    .button-dropdown__content {
+      height: 132px;
+    }
+  }
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+

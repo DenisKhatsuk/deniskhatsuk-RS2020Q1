@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import "./abstract/constants";
+@import "./abstract/mixins";
 
 @import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 @import "./base/normalize";
@@ -11,6 +12,8 @@
 @import "./layout/header";
 @import "./layout/main";
 
+@import "./components/control";
+@import "./components/button-dropdown";
 @import "./components/search";
 @import "./components/location";
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
