@@ -1,6 +1,7 @@
 import '../sass/styles.scss';
 
 import Background from './components/BackgroundHandler';
+import MarkupBuilder from './components/MarkupBuilder';
 import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 import ForecastHandler from './components/ForecastHandler';
@@ -9,6 +10,9 @@ import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   Background.setBackgroundImage();
+
+  MarkupBuilder.buildHeader();
+  MarkupBuilder.buildMain();
 
   SearchHandler.publishSearchField('.main > .container');
 
