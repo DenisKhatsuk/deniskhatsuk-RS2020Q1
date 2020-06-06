@@ -18,3 +18,30 @@
     flex-wrap: wrap;
   }
 }
+
+
+@media (max-width: 767px) {
+  .main {
+    &__container{
+      flex-wrap: wrap;
+    }
+
+    &__weather,
+    &__map {
+      width: 100%;
+    }
+
+    &__map {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 35px;
+    }
+  }
+}
+
+@media (max-width: 515px) {
+  .main__map {
+    justify-content: center;
+  }
+}

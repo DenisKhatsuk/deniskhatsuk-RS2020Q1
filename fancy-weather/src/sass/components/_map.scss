@@ -11,3 +11,31 @@
     text-align: right;
   }
 }
+
+@media (max-width: 1199px) {
+  .map {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 991px) {
+  .map {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 767px) {
+  .map {
+    width: 296px;
+    height: 250px;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 515px) {
+  .map__coordinates {
+    text-align: center;
+  }
+}
