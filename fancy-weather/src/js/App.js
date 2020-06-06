@@ -12,14 +12,17 @@ import GeocodingHandler from './components/GeocodingHandler';
 window.addEventListener('DOMContentLoaded', async () => {
   const state = {
     language: 'en',
-    units: 'metric',
+    units: localStorage.getItem('units') || 'metric',
+    lat: 0,
+    lng: 0,
   };
+
   Background.setBackgroundImage();
 
   MarkupBuilder.buildHeader();
   MarkupBuilder.buildMain();
 
-  ControlHandler.publishControlBlock('.header > .container');
+  ControlHandler.publishControlBlock('.header > .container', state);
   ControlHandler.startControlFunctions();
 
   SearchHandler.publishSearchField('.header > .container');
@@ -29,6 +32,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   const { loc } = await LocationHandler.getLocation();
   const locationCoordinates = loc.split(',');
   const [userLat, userLng] = locationCoordinates;
+  state.lat = userLat;
+  state.lng = userLng;
 
   MapHandler.addMapContainer('.main__map');
   MapHandler.init(userLat, userLng);
@@ -43,7 +48,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
   }
 
-  addWeatherToPage(userLat, userLng);
+  addWeatherToPage(userLat, userLng, state.language, state.units);
 
   const searchForm = document.querySelector('.search');
   const searchInput = document.querySelector('.search__input');
@@ -60,7 +65,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     placeField.textContent = `${formatted}`;
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
-    addWeatherToPage(lat, lng);
+    addWeatherToPage(lat, lng, state.language, state.units);
+    state.lat = lat;
+    state.lng = lng;
   });
 
   const unitsGroup = document.querySelector('.control__units');
@@ -72,8 +79,18 @@ window.addEventListener('DOMContentLoaded', async () => {
         lat,
         lng,
       } = await GeocodingHandler.getLocationGeocoding(currentCity);
-      addWeatherToPage(lat, lng, '', unitClicked);
+      addWeatherToPage(lat, lng, state.language, unitClicked);
       state.units = unitClicked;
+      localStorage.setItem('units', unitClicked);
     }
   });
+
+  // const languageGroup = document.querySelector('.control__language');
+  // languageGroup.addEventListener('click', (event) => {
+  //   const languageClicked = event.target.getAttribute('data-type');
+  //   if (languageClicked !== state.language) {
+  //     addWeatherToPage(state.lat, state.lng, languageClicked, state.units);
+  //     state.language = languageClicked;
+  //   }
+  // });
 });

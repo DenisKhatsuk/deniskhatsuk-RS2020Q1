@@ -2,7 +2,9 @@ import Dropdown from './ButtonDropdown';
 import Background from './BackgroundHandler';
 
 class ControlHandler {
-  static createControlMarkup() {
+  static createControlMarkup(state) {
+    const imperialClass = state.units === 'metric' ? 'control__button_disabled' : '';
+    const metricClass = state.units === 'metric' ? '' : 'control__button_disabled';
     const ControlMarkup = `
       <div class="control header__control">
         <button class="control__button control__button_refresh" type="button">
@@ -11,20 +13,20 @@ class ControlHandler {
 
         <div class="button-dropdown control__language">
           <button class="button-dropdown__button button-dropdown__button_current" type="button">
-            <div class="button-dropdown__button_text">
+            <div class="button-dropdown__button_text" data-type="en">
               EN
             </div>
           </button>
           <div class="button-dropdown__content">
-            <button class="button-dropdown__button button-dropdown__button_selected" type="button">EN</button>
-            <button class="button-dropdown__button" type="button">RU</button>
-            <button class="button-dropdown__button" type="button">BE</button>
+            <button class="button-dropdown__button button-dropdown__button_selected" data-type="en" type="button">EN</button>
+            <button class="button-dropdown__button" data-type="ru" type="button">RU</button>
+            <button class="button-dropdown__button" data-type="be" type="button">BE</button>
           </div>
         </div>
 
         <div class="control__group control__units">
-          <button class="control__button control__button_unit control__button_disabled" data-type="imperial" type="button">°F</button>
-          <button class="control__button control__button_unit" data-type="metric" type="button">°С</button>
+          <button class="control__button control__button_unit ${imperialClass}" data-type="imperial" type="button">°F</button>
+          <button class="control__button control__button_unit ${metricClass}" data-type="metric" type="button">°С</button>
         </div>
 
       </div>
@@ -32,9 +34,9 @@ class ControlHandler {
     return ControlMarkup;
   }
 
-  publishControlBlock(parentElement = 'body') {
+  publishControlBlock(parentElement = 'body', state) {
     const parent = document.querySelector(`${parentElement}`);
-    const controlMarkup = ControlHandler.createControlMarkup();
+    const controlMarkup = ControlHandler.createControlMarkup(state);
     const controlElement = document.createElement('div');
     controlElement.classList.add('header__control');
     controlElement.innerHTML = controlMarkup;
