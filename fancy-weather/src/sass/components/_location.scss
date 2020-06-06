@@ -1,6 +1,9 @@
 .location {
   &__place {
     font-size: 4.4rem;
+    font-weight: bold;
+    line-height: 5.4rem;
+    text-transform: uppercase;
   }
 
   &__date {

@@ -8,7 +8,11 @@ function getCurrentDate(language = 'en-US') {
     minute: '2-digit',
     second: '2-digit',
   };
-  return DATE.toLocaleString(language, options);
+  const localDateString = DATE.toLocaleString(language, options);
+  const localDateStringArray = localDateString.split(',');
+  const [weekday, monthAndDay, time] = localDateStringArray;
+  const [month, day] = monthAndDay.trim().split(' ');
+  return `${weekday} ${day} ${month} ${time}`;
 }
 
 function getShortDate(dateUnix, language = 'en-US') {

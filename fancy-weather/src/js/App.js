@@ -28,6 +28,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   MapHandler.addMapContainer('.main__map');
   MapHandler.init(userLat, userLng);
+  MapHandler.addCoordinatesContainer('.main__map');
+  MapHandler.publishCoordinates(userLat, userLng);
 
   ForecastHandler.init('.main__weather');
 
@@ -53,6 +55,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
     placeField.textContent = `${formatted}`;
     MapHandler.init(lat, lng);
+    MapHandler.publishCoordinates(lat, lng);
     addWeatherToPage(lat, lng);
   });
 });

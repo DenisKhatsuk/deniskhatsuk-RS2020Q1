@@ -18,13 +18,42 @@ class MapHandler {
     return this;
   }
 
-  addMapContainer(parentElement) {
+  addMapContainer(parentElement = 'body') {
     const parent = document.querySelector(`${parentElement}`);
     const mapSection = document.createElement('section');
     mapSection.classList.add('map');
     mapSection.setAttribute('id', 'map');
     parent.append(mapSection);
     return this;
+  }
+
+  addCoordinatesContainer(parentElement = 'body') {
+    const parent = document.querySelector(`${parentElement}`);
+    const coordinates = document.createElement('section');
+    coordinates.classList.add('map__coordinates', 'coordinates');
+    coordinates.innerHTML = `
+      <div class="coordinates__lat"></div>
+      <div class="coordinates__lng"></div>
+    `;
+    parent.append(coordinates);
+    return this;
+  }
+
+  publishCoordinates(lat, lng) {
+    const latitudeElement = document.querySelector('.coordinates__lat');
+    const longitudeElement = document.querySelector('.coordinates__lng');
+    const latitude = MapHandler.getCoordinateInDegMinFormat(lat);
+    const longitude = MapHandler.getCoordinateInDegMinFormat(lng);
+    latitudeElement.textContent = `Latitude: ${latitude}`;
+    longitudeElement.textContent = `Longitude: ${longitude}`;
+    return this;
+  }
+
+  static getCoordinateInDegMinFormat(coord) {
+    const coordinate = Math.floor(coord * 100) / 100;
+    const coordArr = coordinate.toString().split('.');
+    const coordinateFormatted = `${coordArr[0]}°${coordArr[1]}'`;
+    return coordinateFormatted;
   }
 }
 
