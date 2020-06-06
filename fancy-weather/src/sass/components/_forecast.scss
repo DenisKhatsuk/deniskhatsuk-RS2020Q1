@@ -63,12 +63,18 @@
     &_icon {
       height: 63px;
       background-repeat: no-repeat;
-      background-position: 0px -23px;
+      background-position: 15px -23px;
     }
 
     &_temp-night {
       opacity: 0.5;
     }
+  }
+}
+
+@media (max-width: 1199px) {
+  .forecast__upcoming_icon {
+    background-position: 7px -23px;
   }
 }
 
