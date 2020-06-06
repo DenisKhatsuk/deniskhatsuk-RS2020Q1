@@ -1,6 +1,7 @@
-function getCurrentDate(language = 'en-US') {
+function getCurrentDate(timezone, language = 'en-GB') {
   const DATE = new Date();
   const options = {
+    timeZone: timezone,
     weekday: 'short',
     month: 'short',
     day: 'numeric',
@@ -15,7 +16,7 @@ function getCurrentDate(language = 'en-US') {
   return `${weekday} ${day} ${month} ${time}`;
 }
 
-function getShortDate(dateUnix, language = 'en-US') {
+function getShortDate(dateUnix, language = 'en-GB') {
   const dateInMs = dateUnix * 1000;
   const DATE = new Date(dateInMs);
   const options = {

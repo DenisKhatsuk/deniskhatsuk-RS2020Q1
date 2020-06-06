@@ -1,6 +1,7 @@
 import '../sass/styles.scss';
 
 import Background from './components/BackgroundHandler';
+import Date from './components/DateHandler';
 import MarkupBuilder from './components/MarkupBuilder';
 import ControlHandler from './components/ControlHandler';
 import SearchHandler from './components/SearchHandler';
@@ -54,6 +55,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   const searchInput = document.querySelector('.search__input');
   searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const locationElement = document.querySelector('.location');
+    let dateField = document.querySelector('.location__date');
     const placeField = document.querySelector('.location__place');
     const searchInputValue = searchInput.value;
     searchInput.value = '';
@@ -61,8 +64,18 @@ window.addEventListener('DOMContentLoaded', async () => {
       formatted,
       lat,
       lng,
+      name: timezone,
     } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
     placeField.textContent = `${formatted}`;
+    dateField.remove();
+    dateField = document.createElement('div');
+    dateField.classList.add('location__date');
+    locationElement.append(dateField);
+    dateField.textContent = Date.getCurrentDate(timezone);
+    setInterval(() => {
+      dateField.textContent = Date.getCurrentDate(timezone);
+    }, 1000);
+
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
     addWeatherToPage(lat, lng, state.language, state.units);
@@ -84,13 +97,4 @@ window.addEventListener('DOMContentLoaded', async () => {
       localStorage.setItem('units', unitClicked);
     }
   });
-
-  // const languageGroup = document.querySelector('.control__language');
-  // languageGroup.addEventListener('click', (event) => {
-  //   const languageClicked = event.target.getAttribute('data-type');
-  //   if (languageClicked !== state.language) {
-  //     addWeatherToPage(state.lat, state.lng, languageClicked, state.units);
-  //     state.language = languageClicked;
-  //   }
-  // });
 });

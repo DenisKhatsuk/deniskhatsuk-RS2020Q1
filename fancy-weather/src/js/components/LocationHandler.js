@@ -28,11 +28,11 @@ class LocationHandler {
   async publishLocationData() {
     const dateField = document.querySelector('.location__date');
     const placeField = document.querySelector('.location__place');
-    const { city, country } = await this.getLocation();
+    const { city, country, timezone } = await this.getLocation();
     placeField.textContent = `${city}, ${country}`;
-    dateField.textContent = Date.getCurrentDate();
+    dateField.textContent = Date.getCurrentDate(timezone);
     setInterval(() => {
-      dateField.textContent = Date.getCurrentDate();
+      dateField.textContent = Date.getCurrentDate(timezone);
     }, 1000);
   }
 
