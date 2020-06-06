@@ -9,7 +9,7 @@ class ControlHandler {
           <span class="control__button_icon"></span>
         </button>
 
-        <div class="button-dropdown">
+        <div class="button-dropdown control__language">
           <button class="button-dropdown__button button-dropdown__button_current" type="button">
             <div class="button-dropdown__button_text">
               EN
@@ -22,9 +22,9 @@ class ControlHandler {
           </div>
         </div>
 
-        <div class="control__group">
-          <button class="control__button control__button_unit control__button_disabled" type="button">°F</button>
-          <button class="control__button control__button_unit" type="button">°С</button>
+        <div class="control__group control__units">
+          <button class="control__button control__button_unit control__button_disabled" data-type="imperial" type="button">°F</button>
+          <button class="control__button control__button_unit" data-type="metric" type="button">°С</button>
         </div>
 
       </div>
@@ -45,12 +45,12 @@ class ControlHandler {
   startControlFunctions() {
     Dropdown.addDropdownHandler();
     ControlHandler.controlRefresh();
-    ControlHandler.controlSwitcher();
+    ControlHandler.controlUnits();
     return this;
   }
 
-  static controlSwitcher() {
-    const controlGroup = document.querySelector('.control__group');
+  static controlUnits() {
+    const controlGroup = document.querySelector('.control__units');
     controlGroup.addEventListener('click', (event) => {
       const enabledButton = controlGroup.querySelector('.control__button:not(.control__button_disabled)');
       enabledButton.classList.add('control__button_disabled');

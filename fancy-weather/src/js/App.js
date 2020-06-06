@@ -10,6 +10,10 @@ import ForecastHandler from './components/ForecastHandler';
 import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
+  const state = {
+    language: 'en',
+    units: 'metric',
+  };
   Background.setBackgroundImage();
 
   MarkupBuilder.buildHeader();
@@ -33,8 +37,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   ForecastHandler.init('.main__weather');
 
-  async function addWeatherToPage(latitude, longitude) {
-    const weather = await ForecastHandler.getForecast(latitude, longitude);
+  async function addWeatherToPage(latitude, longitude, language, units) {
+    const weather = await ForecastHandler.getForecast(latitude, longitude, language, units);
     ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
     ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
   }
@@ -57,5 +61,19 @@ window.addEventListener('DOMContentLoaded', async () => {
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
     addWeatherToPage(lat, lng);
+  });
+
+  const unitsGroup = document.querySelector('.control__units');
+  unitsGroup.addEventListener('click', async (event) => {
+    const unitClicked = event.target.getAttribute('data-type');
+    if (unitClicked !== state.units) {
+      const currentCity = document.querySelector('.location__place').textContent;
+      const {
+        lat,
+        lng,
+      } = await GeocodingHandler.getLocationGeocoding(currentCity);
+      addWeatherToPage(lat, lng, '', unitClicked);
+      state.units = unitClicked;
+    }
   });
 });
