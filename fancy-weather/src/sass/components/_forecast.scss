@@ -26,4 +26,46 @@
       background-position: 0 -40px;
     }
   }
+
+  &__upcoming {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    &_day {
+      width: 30%;
+      font-size: 2.2rem;
+      line-height: 2.7rem;
+      font-weight: bold;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        width: 50%;
+      }
+    }
+
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        width: 30%;
+      }
+    }
+
+    &_icon {
+      height: 63px;
+      background-repeat: no-repeat;
+      background-position: 0px -23px;
+    }
+
+    &_temp-night {
+      opacity: 0.5;
+    }
+  }
 }

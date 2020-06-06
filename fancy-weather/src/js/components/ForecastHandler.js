@@ -65,21 +65,21 @@ class ForecastHandler {
         tempDay1,
         tempNight1,
         humidity1,
-        description1,
+        icon1,
       },
       {
         date2: dateUnix2,
         tempDay2,
         tempNight2,
         humidity2,
-        description2,
+        icon2,
       },
       {
         date3: dateUnix3,
         tempDay3,
         tempNight3,
         humidity3,
-        description3,
+        icon3,
       },
     ] = forecast;
     const day1 = Date.getShortDate(dateUnix1);
@@ -92,19 +92,41 @@ class ForecastHandler {
     const temperatureDay3 = Math.round(tempDay3);
     const temperatureNight3 = Math.round(tempNight3);
 
-    forecastContainer.textContent = `
-      ${day1},
-      Temperature: ${temperatureDay1}°C / ${temperatureNight1}°C,
-      Humidity: ${humidity1}%,
-      ${description1}
-      ${day2},
-      Temperature: ${temperatureDay2}°C / ${temperatureNight2}°C,
-      Humidity: ${humidity2}%,
-      ${description2}
-      ${day3},
-      Temperature: ${temperatureDay3}°C / ${temperatureNight3}°C,
-      Humidity: ${humidity3}%,
-      ${description3}`;
+    forecastContainer.innerHTML = `
+      <div class="forecast__upcoming_day">
+        <div class="forecast__upcoming_header">
+          <div>${day1}</div>
+          <div class="forecast__upcoming_icon" style="background-image: url('http://openweathermap.org/img/wn/${icon1}@2x.png')"></div>
+        </div>
+        <div class="forecast__upcoming_main">
+          <div class="forecast__upcoming_temp-day">${temperatureDay1}°</div>
+          <div class="forecast__upcoming_temp-night">${temperatureNight1}°</div>
+          <div class="forecast__upcoming_humidity">${humidity1}%</div>
+        </div>
+      </div>
+      <div class="forecast__upcoming_day">
+        <div class="forecast__upcoming_header">
+          <div>${day2}</div>
+          <div class="forecast__upcoming_icon" style="background-image: url('http://openweathermap.org/img/wn/${icon2}@2x.png')"></div>
+        </div>
+        <div class="forecast__upcoming_main">
+          <div class="forecast__upcoming_temp-day">${temperatureDay2}°</div>
+          <div class="forecast__upcoming_temp-night">${temperatureNight2}°</div>
+          <div class="forecast__upcoming_humidity">${humidity2}%</div>
+        </div>
+      </div>
+      <div class="forecast__upcoming_day">
+        <div class="forecast__upcoming_header">
+          <div>${day3}</div>
+          <div class="forecast__upcoming_icon" style="background-image: url('http://openweathermap.org/img/wn/${icon3}@2x.png')"></div>
+        </div>
+        <div class="forecast__upcoming_main">
+          <div class="forecast__upcoming_temp-day">${temperatureDay3}°</div>
+          <div class="forecast__upcoming_temp-night">${temperatureNight3}°</div>
+          <div class="forecast__upcoming_humidity">${humidity3}%</div>
+        </div>
+      </>
+      `;
     return this;
   }
 
