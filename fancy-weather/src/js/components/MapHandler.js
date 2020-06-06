@@ -1,3 +1,5 @@
+// https://docs.mapbox.com/api/maps/
+
 import mapboxgl from 'mapbox-gl';
 
 const API_KEY = 'pk.eyJ1IjoiZGVuaXNraGF0c3VrIiwiYSI6ImNrYXdjd2EzeTAzNGYycm12Y2JnaTlnbXIifQ.PfUx8xzMFLiDiQumqMpAFg';

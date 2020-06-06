@@ -1,4 +1,5 @@
 // Find API Docs here https://openweathermap.org/api
+
 import Date from './DateHandler';
 
 const API_KEY = '5bc699ca9036e60c3f7d417600991566';
@@ -32,25 +33,27 @@ class ForecastHandler {
   publishTodayWeather(parentSelector = 'body', todayWeather) {
     const todayWeatherContainer = document.querySelector(parentSelector);
     const {
-      date: dateUnix,
       temp,
       feels_like, /* eslint-disable-line */
       humidity,
       wind_speed, /* eslint-disable-line */
       description,
+      icon,
     } = todayWeather;
-    const todayDate = Date.getShortDate(dateUnix);
     const temperature = Math.round(temp);
     const feels = Math.round(feels_like);
     const wind = Math.round(wind_speed);
 
-    todayWeatherContainer.textContent = `
-      Date: ${todayDate},
-      Temperature: ${temperature}°C,
-      Feels like: ${feels}°C,
-      Wind: ${wind}m/s,
-      Humidity: ${humidity}%,
-      ${description}`;
+    todayWeatherContainer.innerHTML = `
+      <div class="forecast__today_temp">${temperature}°</div>
+      <div class="forecast__today_details">
+        <div class="forecast__today_icon" style="background-image: url('http://openweathermap.org/img/wn/${icon}@4x.png')"></div>
+        <div>${description}</div>
+        <div>Feels like: ${feels}°C</div>
+        <div>Wind: ${wind} m/s</div>
+        <div>Humidity: ${humidity}%</div>
+      </div>
+      `;
     return this;
   }
 
@@ -90,15 +93,15 @@ class ForecastHandler {
     const temperatureNight3 = Math.round(tempNight3);
 
     forecastContainer.textContent = `
-      Date: ${day1},
+      ${day1},
       Temperature: ${temperatureDay1}°C / ${temperatureNight1}°C,
       Humidity: ${humidity1}%,
       ${description1}
-      Date: ${day2},
+      ${day2},
       Temperature: ${temperatureDay2}°C / ${temperatureNight2}°C,
       Humidity: ${humidity2}%,
       ${description2}
-      Date: ${day3},
+      ${day3},
       Temperature: ${temperatureDay3}°C / ${temperatureNight3}°C,
       Humidity: ${humidity3}%,
       ${description3}`;
@@ -124,6 +127,7 @@ class ForecastHandler {
         weather: [
           {
             description,
+            icon,
           },
         ],
       },
@@ -138,6 +142,7 @@ class ForecastHandler {
           weather: [
             {
               description: description1,
+              icon: icon1,
             },
           ],
         },
@@ -151,6 +156,7 @@ class ForecastHandler {
           weather: [
             {
               description: description2,
+              icon: icon2,
             },
           ],
         },
@@ -164,6 +170,7 @@ class ForecastHandler {
           weather: [
             {
               description: description3,
+              icon: icon3,
             },
           ],
         },
@@ -178,6 +185,7 @@ class ForecastHandler {
         humidity,
         wind_speed,
         description,
+        icon,
       },
       {
         date1,
@@ -185,6 +193,7 @@ class ForecastHandler {
         tempNight1,
         humidity1,
         description1,
+        icon1,
       },
       {
         date2,
@@ -192,6 +201,7 @@ class ForecastHandler {
         tempNight2,
         humidity2,
         description2,
+        icon2,
       },
       {
         date3,
@@ -199,6 +209,7 @@ class ForecastHandler {
         tempNight3,
         humidity3,
         description3,
+        icon3,
       },
     ];
   }

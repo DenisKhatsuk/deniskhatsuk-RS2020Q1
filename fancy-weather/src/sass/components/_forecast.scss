@@ -1,0 +1,29 @@
+.forecast {
+  &__today {
+    display: flex;
+    justify-content: space-between;
+
+    &_temp {
+      width: 55%;
+      font-size: 18rem;
+      font-weight: bold;
+      line-height: 30rem;
+    }
+
+    &_details {
+      width: 40%;
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 3.7rem;;
+      text-transform: uppercase;
+    }
+
+    &_icon {
+      width: 200px;
+      height: 130px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 0 -40px;
+    }
+  }
+}

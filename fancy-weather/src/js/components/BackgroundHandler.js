@@ -1,3 +1,5 @@
+// https://unsplash.com/documentation
+
 const API_KEY = '4EHFU1PJFteXWJSH7FYI_K2SIpSD4_u7kSG2ddVq_Z88';
 const REQUEST_URL = `https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=nature+summer&client_id=${API_KEY}`;
 

@@ -19,9 +19,7 @@ function getShortDate(dateUnix, language = 'en-US') {
   const dateInMs = dateUnix * 1000;
   const DATE = new Date(dateInMs);
   const options = {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
+    weekday: 'long',
   };
   return DATE.toLocaleString(language, options);
 }

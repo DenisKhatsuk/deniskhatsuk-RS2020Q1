@@ -1,3 +1,5 @@
+// https://ipinfo.io/developers
+
 import Date from './DateHandler';
 
 const API_KEY = '9a5f3199e9ff19';
