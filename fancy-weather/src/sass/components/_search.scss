@@ -30,9 +30,11 @@
 
 @media (max-width: 420px) {
   .search {
+    text-align: center;
+
     > input,
     > button {
-      padding: 13px 13px;
+      padding: 13px 11px;
     }
   }
 }
