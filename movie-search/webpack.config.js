@@ -69,7 +69,7 @@ module.exports = (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Movie Search',
-        template: './src/html/template.html',
+        template: './src/public/index.html',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
