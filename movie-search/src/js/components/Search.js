@@ -4,7 +4,7 @@ export default class Search {
     <form class="search" autocomplete="off">
       <i class="search__icon_search fas fa-search"></i>
       <i class="search__icon_spinner fas fa-spinner fa-spin"></i>
-      <input class="search__input" type="text" name="search" id="search" placeholder="Search a movie">
+      <input class="search__input" type="text" name="search" id="search" placeholder="Search a movie" autofocus>
       <i class="search__icon_close fas fa-times"></i>
       <button class="search__button" type="submit" id="search__button">Search</button>
     </form>

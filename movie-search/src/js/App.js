@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const searchSearchIcon = document.querySelector('.search__icon_search');
   const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
   const searchClearButton = document.querySelector('.search__icon_close');
-  searchInput.focus();
   searchInput.addEventListener('input', () => {
     if (searchInput.value !== '') {
       searchClearButton.classList.add('search__icon_visible');
