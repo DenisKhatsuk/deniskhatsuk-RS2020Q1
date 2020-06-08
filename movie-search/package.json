@@ -4,7 +4,6 @@
   "description": "Movie Search RSSchool task",
   "main": "./src/js/App.js",
   "scripts": {
-    "style": "sass --watch src/sass/style.scss style.css",
     "lint": "eslint ./src/js",
     "lint:fix": "eslint ./src/js --fix",
     "dev": "webpack --mode development",

@@ -13,7 +13,9 @@ import InfoPublisher from './components/InfoPublisher';
 window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
   pageBuilder.addContentToDOM();
+
   const infoPublisher = new InfoPublisher('information');
+
   Main.addMinHeight();
   SwiperSlider.addSlider('carousel');
 
