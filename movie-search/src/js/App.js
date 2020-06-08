@@ -1,6 +1,7 @@
 import '../sass/style.scss';
 
 import Swiper from 'swiper';
+import SwiperConfig from './components/SwiperConfig';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
@@ -37,36 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   const swiperWrapper = document.querySelector('.swiper-wrapper');
-  const mySwiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 40,
-    preloadImages: true,
-    watchSlidesProgress: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-      dynamicMainBullets: 4,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-    },
-  });
+  const { swiperConfig } = SwiperConfig;
+  const mySwiper = new Swiper('.swiper-container', swiperConfig);
 
   function showResults(movies) {
     searchSearchIcon.setAttribute('style', 'display: inline-block');
