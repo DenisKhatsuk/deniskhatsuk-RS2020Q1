@@ -9,6 +9,7 @@ import ContentBuilder from './components/ContentBuilder';
 import SwiperSlider from './components/SwiperSlider';
 import RequestHandler from './components/RequestHandler';
 import InfoPublisher from './components/InfoPublisher';
+import Search from './components/Search';
 
 window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
@@ -19,29 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
   Main.addMinHeight();
   SwiperSlider.addSlider('carousel');
 
-  const searchForm = document.querySelector('form.search');
-  const searchInput = searchForm.querySelector('input');
-  const searchSearchIcon = document.querySelector('.search__icon_search');
-  const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
-  const searchClearButton = document.querySelector('.search__icon_close');
-  searchInput.addEventListener('input', () => {
-    if (searchInput.value !== '') {
-      searchClearButton.classList.add('search__icon_visible');
-    } else {
-      searchClearButton.classList.remove('search__icon_visible');
-    }
-  });
-  searchClearButton.addEventListener('click', () => {
-    searchInput.value = '';
-    searchInput.placeholder = 'Search a movie';
-    searchClearButton.classList.remove('search__icon_visible');
-    searchInput.focus();
-  });
+  Search.startSearchIconsHandler();
 
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const { swiperConfig } = SwiperConfig;
   const mySwiper = new Swiper('.swiper-container', swiperConfig);
 
+  const searchSearchIcon = document.querySelector('.search__icon_search');
+  const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
   function showResults(movies) {
     searchSearchIcon.setAttribute('style', 'display: inline-block');
     searchSpinnerIcon.setAttribute('style', 'display: none');
@@ -69,6 +55,9 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  const searchForm = document.querySelector('form.search');
+  const searchInput = searchForm.querySelector('input');
 
   async function inputHandler(event) {
     event.preventDefault();

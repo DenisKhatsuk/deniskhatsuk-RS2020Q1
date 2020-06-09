@@ -10,7 +10,7 @@ export default class Main {
   }
 
   static createMainElement() {
-    const search = Search.createSearchMarkup();
+    const search = Search.markup;
     const main = `
     <div class="container main__container">
       <section class="search-wrapper">
