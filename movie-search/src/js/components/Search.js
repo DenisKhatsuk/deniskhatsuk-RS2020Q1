@@ -17,7 +17,7 @@ class Search {
     const searchInput = searchForm.querySelector('input');
     const searchClearButton = document.querySelector('.search__icon_close');
     searchInput.addEventListener('input', () => {
-      if (searchInput.value !== '') {
+      if (searchInput.value) {
         searchClearButton.classList.add('search__icon_visible');
       } else {
         searchClearButton.classList.remove('search__icon_visible');
