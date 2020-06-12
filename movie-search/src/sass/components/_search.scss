@@ -41,6 +41,10 @@
     &_visible {
       display: inline-block;
     }
+
+    &_hidden {
+      display: none;
+    }
   }
 
   &__button {

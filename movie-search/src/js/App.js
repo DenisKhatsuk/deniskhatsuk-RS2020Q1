@@ -29,8 +29,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const searchSearchIcon = document.querySelector('.search__icon_search');
   const searchSpinnerIcon = document.querySelector('.search__icon_spinner');
   function showResults(movies) {
-    searchSearchIcon.setAttribute('style', 'display: inline-block');
-    searchSpinnerIcon.setAttribute('style', 'display: none');
+    searchSearchIcon.classList.remove('search__icon_hidden');
+    searchSpinnerIcon.classList.remove('search__icon_visible');
+    searchSpinnerIcon.classList.add('search__icon_hidden');
     movies.forEach((movie) => {
       const {
         title, poster, year, imdbRating, imdbID,
@@ -63,8 +64,9 @@ window.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const informationField = document.querySelector('.information');
     informationField.innerHTML = '';
-    searchSearchIcon.setAttribute('style', 'display: none');
-    searchSpinnerIcon.setAttribute('style', 'display: inline-block');
+    searchSearchIcon.classList.add('search__icon_hidden');
+    searchSpinnerIcon.classList.remove('search__icon_hidden');
+    searchSpinnerIcon.classList.add('search__icon_visible');
     const searchInputValue = searchInput.value;
     const requestLanguage = searchInputValue.match(/[А-Яё]$/i) ? 'RU' : 'ENG';
     const request = requestLanguage === 'RU' ? await RequestHandler.translateRequestFromRussian(searchInputValue) : searchInputValue;
@@ -74,8 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
       swiperWrapper.innerHTML = '';
       showResults(moviesList);
     } catch (error) {
-      searchSpinnerIcon.setAttribute('style', 'display: none');
-      searchSearchIcon.setAttribute('style', 'display: inline-block');
+      searchSearchIcon.classList.remove('search__icon_hidden');
+      searchSpinnerIcon.classList.add('search__icon_hidden');
       infoPublisher.publishInfo(`No results for "${request}"`);
       return;
     }
