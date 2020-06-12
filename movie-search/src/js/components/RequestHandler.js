@@ -47,7 +47,7 @@ class RequestHandler {
   }
 
   async getImdbRating(movieID) {
-    const url = `//omdbapi.com/?i=${movieID}&apikey=${this.omdbApiKey}`;
+    const url = `https://omdbapi.com/?i=${movieID}&apikey=${this.omdbApiKey}`;
     const response = await fetch(url);
     const movieInfo = await response.json();
     const rating = movieInfo.imdbRating;
