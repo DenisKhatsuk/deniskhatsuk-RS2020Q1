@@ -1,3 +1,5 @@
+import InfoPublisher from './InfoPublisher';
+
 class RequestHandler {
   constructor() {
     this.omdbApiKey = 'fa7b0bcf';
@@ -11,11 +13,7 @@ class RequestHandler {
     const moviesFullData = await response.json();
     if (JSON.stringify(moviesFullData.Error)) {
       const error = `Server replied with: ${JSON.stringify(moviesFullData.Error)}`;
-      const errorMessage = document.createElement('span');
-      const parent = document.querySelector('.information');
-      errorMessage.classList.add('error');
-      errorMessage.textContent = error;
-      parent.appendChild(errorMessage);
+      InfoPublisher.publishInfo(error);
     }
     const moviesList = RequestHandler.parseMovies(moviesFullData);
     const moviesRatings = await Promise.all(this.createRatingsArray(moviesList));

@@ -15,8 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const pageBuilder = new ContentBuilder('body', Header.createHeader(), Main.createMain(), Footer.createFooter());
   pageBuilder.addContentToDOM();
 
-  const infoPublisher = new InfoPublisher('information');
-
   Main.addMinHeight();
   SwiperSlider.addSlider('carousel');
 
@@ -76,11 +74,11 @@ window.addEventListener('DOMContentLoaded', () => {
       const moviesList = await RequestHandler.makeRequest(request);
       swiperWrapper.innerHTML = '';
       showResults(moviesList);
-      if (requestLanguage === 'RU') infoPublisher.publishInfo(`Showing results for "${request}"`);
+      if (requestLanguage === 'RU') InfoPublisher.publishInfo(`Showing results for "${request}"`);
     } catch (error) {
       searchSearchIcon.classList.remove('search__icon_hidden');
       searchSpinnerIcon.classList.add('search__icon_hidden');
-      infoPublisher.publishInfo(`No results for "${request}"`);
+      InfoPublisher.publishInfo(`No results for "${request}"`);
       return;
     }
     swiperWrapper.setAttribute('data-request', request);
