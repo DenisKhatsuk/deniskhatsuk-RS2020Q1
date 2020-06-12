@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   initialRequest('Subspecies');
 
-  mySwiper.on('reachEnd', async () => {
+  async function loadNextSlides() {
     const request = swiperWrapper.getAttribute('data-request');
     let page = swiperWrapper.getAttribute('data-page');
     page = +page + 1;
@@ -103,5 +103,10 @@ window.addEventListener('DOMContentLoaded', () => {
       showResults(moviesList);
       swiperWrapper.setAttribute('data-page', page);
     }
+  }
+
+  mySwiper.on('slideChange', () => {
+    const fourthSlideFromEndIndex = mySwiper.slides.length - 4;
+    if (mySwiper.activeIndex === fourthSlideFromEndIndex) loadNextSlides();
   });
 });
