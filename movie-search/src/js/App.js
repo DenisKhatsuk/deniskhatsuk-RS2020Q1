@@ -85,7 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     swiperWrapper.setAttribute('data-request', request);
     swiperWrapper.setAttribute('data-page', '1');
-    searchInput.placeholder = searchInput.value;
   }
   searchForm.addEventListener('submit', inputHandler);
 
