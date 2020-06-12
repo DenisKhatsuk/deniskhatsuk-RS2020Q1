@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
     movies.forEach(({
       title, poster, year, imdbRating, imdbID,
     }) => {
-      slidesArray.push(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
+      slidesArray.push(SwiperSlider.createSlideMarkup(title, poster, year, imdbRating, imdbID));
     });
     mySwiper.appendSlide(slidesArray);
     const newSlides = swiperWrapper.querySelectorAll('.swiper-slide_loading');
