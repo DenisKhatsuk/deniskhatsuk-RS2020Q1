@@ -1,5 +1,4 @@
 .swiper-container {
-  width: 95%;
   height: 370px;
 }
 
@@ -86,13 +85,6 @@
       max-width: 190px;
       max-height: 245px;
     }
-  }
-}
-
-@media (max-width: 767px) {
-  .swiper-container {
-    width: 84%;
-    padding: 0 35px;
   }
 }
 
