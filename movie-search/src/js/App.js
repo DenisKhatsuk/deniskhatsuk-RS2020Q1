@@ -69,7 +69,8 @@ window.addEventListener('DOMContentLoaded', () => {
     searchSpinnerIcon.classList.remove('search__icon_hidden');
     searchSpinnerIcon.classList.add('search__icon_visible');
     const searchInputValue = searchInput.value;
-    const requestLanguage = searchInputValue.match(/[А-Яё]$/i) ? 'RU' : 'ENG';
+    const russianLetters = /[А-Яё]$/i;
+    const requestLanguage = searchInputValue.match(russianLetters) ? 'RU' : 'ENG';
     const request = requestLanguage === 'RU' ? await RequestHandler.translateRequestFromRussian(searchInputValue) : searchInputValue;
     if (requestLanguage === 'RU') infoPublisher.publishInfo(`Showing results for "${request}"`);
     try {
