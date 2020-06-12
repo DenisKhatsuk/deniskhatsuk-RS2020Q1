@@ -28,12 +28,10 @@ class RequestHandler {
   }
 
   static addImdbRatings(moviesList, moviesRatings) {
-    const movies = moviesList.map((movie, index) => (
-      Object.defineProperty(movie, 'imdbRating', {
-        __proto__: null,
-        value: moviesRatings[index],
-      })
-    ));
+    const movies = moviesList.map((movie, index) => ({
+      ...movie,
+      imdbRating: moviesRatings[index],
+    }));
     return movies;
   }
 
