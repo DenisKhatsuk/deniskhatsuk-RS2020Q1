@@ -10,9 +10,10 @@ export default class SwiperSlider {
     <div class="swiper-container">
       <div class="swiper-wrapper">
       </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
     `;
     return swiperEl;
   }
