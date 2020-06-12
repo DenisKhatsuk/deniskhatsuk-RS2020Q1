@@ -32,10 +32,9 @@ window.addEventListener('DOMContentLoaded', () => {
     searchSearchIcon.classList.remove('search__icon_hidden');
     searchSpinnerIcon.classList.remove('search__icon_visible');
     searchSpinnerIcon.classList.add('search__icon_hidden');
-    movies.forEach((movie) => {
-      const {
-        title, poster, year, imdbRating, imdbID,
-      } = movie;
+    movies.forEach(({
+      title, poster, year, imdbRating, imdbID,
+    }) => {
       mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
     });
     const newSlides = swiperWrapper.querySelectorAll('.swiper-slide_loading');
