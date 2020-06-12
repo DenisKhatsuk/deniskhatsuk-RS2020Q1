@@ -8,7 +8,7 @@ class RequestHandler {
 
   async getMoviesList(searchRequest, resultsPage) {
     const page = resultsPage ? `&page=${resultsPage}` : '';
-    const url = `//omdbapi.com/?s=${searchRequest}${page}&apikey=${this.omdbApiKey}`;
+    const url = `https://omdbapi.com/?s=${searchRequest}${page}&apikey=${this.omdbApiKey}`;
     const response = await fetch(url);
     const moviesFullData = await response.json();
     if (JSON.stringify(moviesFullData.Error)) {
