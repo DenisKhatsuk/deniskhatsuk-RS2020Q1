@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
-  line-height: 1.15; 
-  -webkit-text-size-adjust: 100%; 
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -17,14 +21,14 @@ h1 {
 }
 
 hr {
-  box-sizing: content-box; 
-  height: 0; 
-  overflow: visible; 
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 
 pre {
-  font-family: monospace, monospace; 
-  font-size: 1em; 
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
 a {
@@ -32,9 +36,9 @@ a {
 }
 
 abbr[title] {
-  border-bottom: none; 
-  text-decoration: underline; 
-  text-decoration: underline dotted; 
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
 }
 
 b,
@@ -45,8 +49,8 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; 
-  font-size: 1em; 
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
 small {
@@ -78,14 +82,14 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; 
-  font-size: 100%; 
-  line-height: 1.15; 
-  margin: 0; 
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 
 button,
-input { 
+input {
   overflow: visible;
 }
 
@@ -114,12 +118,12 @@ fieldset {
 }
 
 legend {
-  box-sizing: border-box; 
-  color: inherit; 
-  display: table; 
-  max-width: 100%; 
-  padding: 0; 
-  white-space: normal; 
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
 }
 
 progress {
@@ -132,8 +136,8 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; 
-  padding: 0; 
+  box-sizing: border-box;
+  padding: 0;
 }
 
 [type="number"]::-webkit-inner-spin-button,
@@ -142,8 +146,8 @@ textarea {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield; 
-  outline-offset: -2px; 
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-decoration {
@@ -151,8 +155,8 @@ textarea {
 }
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; 
-  font: inherit; 
+  -webkit-appearance: button;
+  font: inherit;
 }
 
 details {
