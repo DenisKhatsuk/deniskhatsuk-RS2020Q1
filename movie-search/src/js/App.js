@@ -96,8 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function loadNextSlides() {
     const request = swiperWrapper.getAttribute('data-request');
-    let page = swiperWrapper.getAttribute('data-page');
-    page = +page + 1;
+    const page = Number(swiperWrapper.getAttribute('data-page')) + 1;
     if (request !== null) {
       const moviesList = await RequestHandler.makeRequest(request, page);
       showResults(moviesList);
