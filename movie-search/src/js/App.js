@@ -72,11 +72,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const russianLetters = /[А-Яё]$/i;
     const requestLanguage = searchInputValue.match(russianLetters) ? 'RU' : 'ENG';
     const request = requestLanguage === 'RU' ? await RequestHandler.translateRequestFromRussian(searchInputValue) : searchInputValue;
-    if (requestLanguage === 'RU') infoPublisher.publishInfo(`Showing results for "${request}"`);
     try {
       const moviesList = await RequestHandler.makeRequest(request);
       swiperWrapper.innerHTML = '';
       showResults(moviesList);
+      if (requestLanguage === 'RU') infoPublisher.publishInfo(`Showing results for "${request}"`);
     } catch (error) {
       searchSearchIcon.classList.remove('search__icon_hidden');
       searchSpinnerIcon.classList.add('search__icon_hidden');
