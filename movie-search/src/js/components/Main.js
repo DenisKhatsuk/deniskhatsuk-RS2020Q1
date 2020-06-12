@@ -2,14 +2,14 @@ import Search from './Search';
 
 export default class Main {
   static createMain() {
-    const main = Main.createMainElement();
+    const main = Main.createMainElementMarkup();
     const mainEl = document.createElement('main');
     mainEl.classList.add('main');
     mainEl.innerHTML = main;
     return mainEl;
   }
 
-  static createMainElement() {
+  static createMainElementMarkup() {
     const search = Search.markup;
     const main = `
     <div class="container main__container">
