@@ -32,11 +32,13 @@ window.addEventListener('DOMContentLoaded', () => {
     searchSearchIcon.classList.remove('search__icon_hidden');
     searchSpinnerIcon.classList.remove('search__icon_visible');
     searchSpinnerIcon.classList.add('search__icon_hidden');
+    const slidesArray = [];
     movies.forEach(({
       title, poster, year, imdbRating, imdbID,
     }) => {
-      mySwiper.appendSlide(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
+      slidesArray.push(SwiperSlider.createSlide(title, poster, year, imdbRating, imdbID));
     });
+    mySwiper.appendSlide(slidesArray);
     const newSlides = swiperWrapper.querySelectorAll('.swiper-slide_loading');
 
     newSlides.forEach((slide) => {
