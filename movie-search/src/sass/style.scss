@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@import "./base/normalize";
+@import "./base/bootstrap-parts";
+@import "./base/typography";
+
+@import "./abstract/constants";
+
+@import "./components/logo";
+@import "./components/search";
+@import "./components/swiper";
+@import "./components/information";
+@import "./components/error";
+
+@import '../../node_modules/swiper/css/swiper.min.css';
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+@import "./layout/header";
+@import "./layout/main";
+@import "./layout/footer";
+@import "./layout/search-wrapper";
