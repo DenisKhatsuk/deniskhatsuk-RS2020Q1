@@ -198,8 +198,9 @@ class ForecastHandler {
         },
       ],
     } = await request.json();
-    return [
-      { latitude, longitude },
+    return {
+      geolocation: { latitude, longitude },
+      todayWeather:
       {
         date,
         temp,
@@ -209,31 +210,33 @@ class ForecastHandler {
         description,
         icon,
       },
-      {
-        date1,
-        tempDay1,
-        tempNight1,
-        humidity1,
-        description1,
-        icon1,
-      },
-      {
-        date2,
-        tempDay2,
-        tempNight2,
-        humidity2,
-        description2,
-        icon2,
-      },
-      {
-        date3,
-        tempDay3,
-        tempNight3,
-        humidity3,
-        description3,
-        icon3,
-      },
-    ];
+      forecast: [
+        {
+          date1,
+          tempDay1,
+          tempNight1,
+          humidity1,
+          description1,
+          icon1,
+        },
+        {
+          date2,
+          tempDay2,
+          tempNight2,
+          humidity2,
+          description2,
+          icon2,
+        },
+        {
+          date3,
+          tempDay3,
+          tempNight3,
+          humidity3,
+          description3,
+          icon3,
+        },
+      ]
+    };
   }
 }
 

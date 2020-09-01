@@ -45,8 +45,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   async function addWeatherToPage(latitude, longitude, language, units) {
     const weather = await ForecastHandler.getForecast(latitude, longitude, language, units);
-    ForecastHandler.publishTodayWeather('.forecast__today', weather[1]);
-    ForecastHandler.publishForecast('.forecast__upcoming', [weather[2], weather[3], weather[4]]);
+    ForecastHandler.publishTodayWeather('.forecast__today', weather.todayWeather);
+    ForecastHandler.publishForecast('.forecast__upcoming', [weather.forecast[0], weather.forecast[1], weather.forecast[2]]);
   }
 
   addWeatherToPage(userLat, userLng, state.language, state.units);
