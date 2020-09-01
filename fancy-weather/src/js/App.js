@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     units: localStorage.getItem('units') || 'metric',
     lat: 0,
     lng: 0,
+    timer: 0,
   };
 
   Background.setBackgroundImage();
@@ -72,7 +73,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     dateField.classList.add('location__date');
     locationElement.append(dateField);
     dateField.textContent = Date.getCurrentDate(timezone);
-    setInterval(() => {
+    clearInterval(state.timer);
+    state.timer = setInterval(() => {
       dateField.textContent = Date.getCurrentDate(timezone);
     }, 1000);
 
