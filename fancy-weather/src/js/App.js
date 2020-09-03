@@ -67,6 +67,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       lng,
       name: timezone,
     } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
+    state.lat = lat;
+    state.lng = lng;
     placeField.textContent = `${formatted}`;
     dateField.remove();
     dateField = document.createElement('div');
@@ -80,8 +82,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
-    state.lat = lat;
-    state.lng = lng;
     addWeatherToPage();
   });
 
