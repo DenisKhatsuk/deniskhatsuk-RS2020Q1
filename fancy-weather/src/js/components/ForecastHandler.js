@@ -130,7 +130,13 @@ class ForecastHandler {
     return this;
   }
 
-  async getForecast(lat, long, lang, units) {
+  async getForecast(state) {
+    const {
+      lat,
+      lng: long,
+      language: lang,
+      units,
+    } = state;
     this.lat = lat || this.lat;
     this.long = long || this.long;
     this.lang = lang || this.lang;
@@ -235,7 +241,7 @@ class ForecastHandler {
           description3,
           icon3,
         },
-      ]
+      ],
     };
   }
 }

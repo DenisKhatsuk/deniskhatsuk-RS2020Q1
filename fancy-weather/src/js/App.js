@@ -44,13 +44,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   ForecastHandler.init('.main__weather');
 
-  async function addWeatherToPage(latitude, longitude, language, units) {
-    const weather = await ForecastHandler.getForecast(latitude, longitude, language, units);
+  async function addWeatherToPage() {
+    const weather = await ForecastHandler.getForecast(state);
     ForecastHandler.publishTodayWeather('.forecast__today', weather.todayWeather);
     ForecastHandler.publishForecast('.forecast__upcoming', [weather.forecast[0], weather.forecast[1], weather.forecast[2]]);
   }
 
-  addWeatherToPage(userLat, userLng, state.language, state.units);
+  addWeatherToPage();
 
   const searchForm = document.querySelector('.search');
   const searchInput = document.querySelector('.search__input');
@@ -80,22 +80,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
-    addWeatherToPage(lat, lng, state.language, state.units);
     state.lat = lat;
     state.lng = lng;
+    addWeatherToPage();
   });
 
   const unitsGroup = document.querySelector('.control__units');
   unitsGroup.addEventListener('click', async (event) => {
     const unitClicked = event.target.getAttribute('data-type');
     if (unitClicked !== state.units) {
-      const currentCity = document.querySelector('.location__place').textContent;
-      const {
-        lat,
-        lng,
-      } = await GeocodingHandler.getLocationGeocoding(currentCity);
-      addWeatherToPage(lat, lng, state.language, unitClicked);
       state.units = unitClicked;
+      addWeatherToPage();
       localStorage.setItem('units', unitClicked);
     }
   });
