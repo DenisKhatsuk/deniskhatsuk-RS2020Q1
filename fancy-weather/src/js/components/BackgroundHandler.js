@@ -15,7 +15,7 @@ function setBackground(image) {
   document.body.style.backgroundImage = `linear-gradient(0deg, rgba(0,0,0,1) 7%, rgba(0,0,0,0.4) 27%), url(${image})`;
 }
 
-async function setBackgroundImage() {
+export default async function setAppBackground() {
   try {
     const backgroundImageURL = await getImageURL();
     const backgroundImage = document.createElement('img');
@@ -27,7 +27,3 @@ async function setBackgroundImage() {
     setBackground(Image);
   }
 }
-
-export default {
-  setBackgroundImage,
-};

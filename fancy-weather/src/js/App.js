@@ -1,6 +1,6 @@
 import '../sass/styles.scss';
 
-import Background from './components/BackgroundHandler';
+import SetAppBackground from './components/BackgroundHandler';
 import Date from './components/DateHandler';
 import MarkupBuilder from './components/MarkupBuilder';
 import ControlHandler from './components/ControlHandler';
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     timer: 0,
   };
 
-  Background.setBackgroundImage();
+  SetAppBackground();
 
   MarkupBuilder.buildHeader();
   MarkupBuilder.buildMain();

@@ -1,5 +1,5 @@
 import Dropdown from './ButtonDropdown';
-import Background from './BackgroundHandler';
+import SetAppBackground from './BackgroundHandler';
 
 class ControlHandler {
   static createControlMarkup(state) {
@@ -65,7 +65,7 @@ class ControlHandler {
     const refreshButtonIcon = refreshButton.querySelector('.control__button_icon');
     refreshButton.addEventListener('click', () => {
       refreshButtonIcon.classList.toggle('rotate');
-      Background.setBackgroundImage();
+      SetAppBackground();
     });
   }
 }
