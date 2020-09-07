@@ -1,4 +1,4 @@
-import Dropdown from './ButtonDropdown';
+import AddLanguageSelectorHandler from './ButtonDropdown';
 import SetAppBackground from './BackgroundHandler';
 
 class ControlHandler {
@@ -45,7 +45,7 @@ class ControlHandler {
   }
 
   startControlFunctions() {
-    Dropdown.addDropdownHandler();
+    AddLanguageSelectorHandler();
     ControlHandler.controlRefresh();
     ControlHandler.controlUnits();
     return this;
