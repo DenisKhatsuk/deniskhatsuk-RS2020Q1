@@ -93,7 +93,7 @@ class ForecastHandler {
       `;
       forecastFragment.appendChild(dayStructure);
     });
-
+    forecastContainer.innerHTML = '';
     forecastContainer.appendChild(forecastFragment);
     return this;
   }
