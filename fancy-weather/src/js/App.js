@@ -31,16 +31,15 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   LocationHandler.init('.main__weather');
   LocationHandler.publishLocationData();
-  const { loc } = await LocationHandler.getLocation();
-  const locationCoordinates = loc.split(',');
-  const [userLat, userLng] = locationCoordinates;
+  const { loc } = LocationHandler.getLocationData();
+  const [userLat, userLng] = loc.split(',');
   state.lat = userLat;
   state.lng = userLng;
 
   MapHandler.addMapContainer('.main__map');
-  MapHandler.init(userLat, userLng);
+  MapHandler.init(state.lat, state.lng);
   MapHandler.addCoordinatesContainer('.main__map');
-  MapHandler.publishCoordinates(userLat, userLng);
+  MapHandler.publishCoordinates(state.lat, state.lng);
 
   ForecastHandler.init('.main__weather');
 
