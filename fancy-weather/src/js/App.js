@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   SearchHandler.publishSearchField('.header > .container');
 
   LocationHandler.init('.main__weather');
-  LocationHandler.publishLocationData();
+  LocationHandler.publishLocationData('.location__date', '.location__place');
   const { loc } = LocationHandler.getLocationData();
   const [userLat, userLng] = loc.split(',');
   state.lat = userLat;

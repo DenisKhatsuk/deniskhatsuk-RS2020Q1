@@ -1,4 +1,20 @@
-// https://ipinfo.io/developers
+// Public methods:
+//  init(parentSelector)
+//    * parentSelector sets parent element inside which container for location is added
+//    * request to location API
+//    * location data is stored in locationData property:
+//      ** loc      - string with coordinates;
+//      ** city     - string with city name;
+//      ** country  - string with country name;
+//      ** timezone - string with timezone;
+//  publishLocationData(dateContainer, locationContainer)
+//    * dateContainer sets selector for date/time content
+//    * locationContainer sets selector for city/country content
+//  getLocationData()
+//    * returns current locationData object
+//
+// API used:
+//  https://ipinfo.io/developers
 
 import Date from './DateHandler';
 
@@ -70,9 +86,9 @@ class LocationHandler {
     return this;
   }
 
-  async publishLocationData() {
-    const dateField = document.querySelector('.location__date');
-    const placeField = document.querySelector('.location__place');
+  async publishLocationData(dateContainer, locationContainer) {
+    const dateField = document.querySelector(dateContainer);
+    const placeField = document.querySelector(locationContainer);
     placeField.textContent = `${this.locationData.city}, ${this.locationData.country}`;
     dateField.textContent = Date.getCurrentDate(this.locationData.timezone);
     setInterval(() => {
