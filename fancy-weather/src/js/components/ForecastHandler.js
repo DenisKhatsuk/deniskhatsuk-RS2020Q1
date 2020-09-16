@@ -1,4 +1,21 @@
-// Find API Docs here https://openweathermap.org/api
+// Public methods:
+//  init(parentSelector)
+//    ** adds container for forecast
+//    * parentSelector sets parent element inside which container for forecast is added
+//  getForecast(state)
+//    **  makes weather request to API, saves returned data in class weather property and
+//    **  returns weather data as object
+//    *   state object should include:
+//    *     lat,
+//    *     lng,
+//    *     language,
+//    *     units.
+//  publishTodayWeather(parentSelector)
+//    ** publishes today's weather to parentSelector element. Default selector is 'body'
+//  publishForecast(parentSelector)
+//    ** publishes forecast to parentSelector element. Default selector is 'body'
+// API used:
+//  https://openweathermap.org/api
 
 import Date from './DateHandler';
 
@@ -10,7 +27,22 @@ class ForecastHandler {
     this.long = '0';
     this.lang = 'en';
     this.units = 'metric';
+    this.weather = {};
   }
+
+  static addForecastContainer(parent) {
+    const forecastSection = document.createElement('section');
+    forecastSection.classList.add('forecast');
+    forecastSection.innerHTML = `
+    <div class="forecast__today">
+    </div>
+    <div class="forecast__upcoming">
+    </div>
+    `;
+    parent.append(forecastSection);
+  }
+
+  /* Public */
 
   init(parentSelector = 'body') {
     const parent = document.querySelector(`${parentSelector}`);
@@ -18,19 +50,7 @@ class ForecastHandler {
     return this;
   }
 
-  static addForecastContainer(parent) {
-    const forecastSection = document.createElement('section');
-    forecastSection.classList.add('forecast');
-    forecastSection.innerHTML = `
-      <div class="forecast__today">
-      </div>
-      <div class="forecast__upcoming">
-      </div>
-    `;
-    parent.append(forecastSection);
-  }
-
-  publishTodayWeather(parentSelector = 'body', todayWeather) {
+  publishTodayWeather(parentSelector = 'body') {
     const todayWeatherContainer = document.querySelector(parentSelector);
     const {
       temp,
@@ -39,7 +59,7 @@ class ForecastHandler {
       wind_speed, /* eslint-disable-line */
       description,
       icon,
-    } = todayWeather;
+    } = this.weather.todayWeather;
     const temperature = Math.round(temp);
     const feels = Math.round(feels_like);
     const wind = Math.round(wind_speed);
@@ -57,11 +77,11 @@ class ForecastHandler {
     return this;
   }
 
-  publishForecast(parentSelector = 'body', forecast) {
+  publishForecast(parentSelector = 'body') {
     const forecastContainer = document.querySelector(parentSelector);
     const forecastFragment = new DocumentFragment();
-    forecast.splice(3);
-    forecast.forEach((dayWeather) => {
+    this.weather.forecast.splice(3);
+    this.weather.forecast.forEach((dayWeather) => {
       const {
         dt: dateUnix,
         temp: {
@@ -129,7 +149,7 @@ class ForecastHandler {
       },
       daily,
     } = await request.json();
-    return {
+    this.weather = {
       geolocation: { latitude, longitude },
       todayWeather:
       {
@@ -143,6 +163,7 @@ class ForecastHandler {
       },
       forecast: daily,
     };
+    return this.weather;
   }
 }
 

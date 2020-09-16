@@ -41,14 +41,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   MapHandler.addCoordinatesContainer('.main__map');
   MapHandler.publishCoordinates(state.lat, state.lng);
 
-  ForecastHandler.init('.main__weather');
-
   async function addWeatherToPage() {
-    const weather = await ForecastHandler.getForecast(state);
-    ForecastHandler.publishTodayWeather('.forecast__today', weather.todayWeather);
-    ForecastHandler.publishForecast('.forecast__upcoming', weather.forecast);
+    ForecastHandler.publishTodayWeather('.forecast__today');
+    ForecastHandler.publishForecast('.forecast__upcoming');
   }
 
+  ForecastHandler.init('.main__weather');
+  await ForecastHandler.getForecast(state);
   addWeatherToPage();
 
   const searchForm = document.querySelector('.search');
@@ -81,6 +80,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     MapHandler.init(lat, lng);
     MapHandler.publishCoordinates(lat, lng);
+    await ForecastHandler.getForecast(state);
     addWeatherToPage();
   });
 
@@ -89,6 +89,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const unitClicked = event.target.getAttribute('data-type');
     if (unitClicked !== state.units) {
       state.units = unitClicked;
+      await ForecastHandler.getForecast(state);
       addWeatherToPage();
       localStorage.setItem('units', unitClicked);
     }
