@@ -18,7 +18,7 @@
 
 import Date from './DateHandler';
 
-const API_KEY = '9a5f3199e9ff199';
+const API_KEY = '9a5f3199e9ff19';
 
 class LocationHandler {
   constructor() {

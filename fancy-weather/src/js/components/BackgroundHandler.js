@@ -2,7 +2,7 @@
 
 import Image from '../../img/background/default.jpg';
 
-const API_KEY = '4EHFU1PJFteXWJSH7FYI_K2SIpSD4_u7kSG2ddVq_Z88';
+const API_KEY = '4EHFU1PJFteXWJSH7FYI_K2SIpSD4_u7kSG2ddVq_Z8';
 const REQUEST_URL = `https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=nature+summer&client_id=${API_KEY}`;
 
 async function getImageURL() {
@@ -10,7 +10,7 @@ async function getImageURL() {
   if (!response.ok) {
     const { errors } = await response.json();
     /* eslint no-console: ["error", { allow: ["warn"] }] */
-    console.warn(`Bad response from Unsplash server. Default background image set. Server reply: ${errors}`);
+    console.warn(`Bad response from Unsplash server. Default background image set. Server reply: "${errors}"`);
   }
   const { urls: { regular } } = await response.json();
   return regular;
