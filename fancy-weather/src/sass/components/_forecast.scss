@@ -70,6 +70,13 @@
       opacity: 0.5;
     }
   }
+
+  &__error {
+    padding-top: 3rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 2.9rem;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -111,6 +118,10 @@
 
   .forecast__upcoming {
     padding-top: 0;
+
+  }
+  .forecast__error {
+    font-size: 2rem;
   }
 }
 
