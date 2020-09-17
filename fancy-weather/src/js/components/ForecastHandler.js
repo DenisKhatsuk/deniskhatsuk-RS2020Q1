@@ -19,7 +19,7 @@
 
 import Date from './DateHandler';
 
-const API_KEY = '5bc699ca9036e60c3f7d4176009915666';
+const API_KEY = '5bc699ca9036e60c3f7d417600991566';
 
 class ForecastHandler {
   constructor() {
@@ -141,50 +141,46 @@ class ForecastHandler {
     this.lang = lang || this.lang;
     this.units = units || this.units;
     const REQUEST_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.lat}&lon=${this.long}&lang=${this.lang}&units=${this.units}&APPID=${API_KEY}`;
-    try {
-      const request = await fetch(REQUEST_URL);
-      if (!request.ok) {
-        throw new Error('Bad response from server. Weather server connection failed.');
-      } else {
-        const {
-          lat: latitude,
-          lon: longitude,
-          current: {
-            dt: date,
-            temp,
-            feels_like, /* eslint-disable-line */
-            humidity,
-            wind_speed, /* eslint-disable-line */
-            weather: [
-              {
-                description,
-                icon,
-              },
-            ],
-          },
-          daily,
-        } = await request.json();
-        this.weather = {
-          geolocation: { latitude, longitude },
-          todayWeather:
+    const request = await fetch(REQUEST_URL);
+    if (!request.ok) {
+      const { message } = await request.json();
+      /* eslint no-console: ["error", { allow: ["warn"] }] */
+      console.warn(`Bad response from forecast server. Server reply: "${message}"`);
+      return false;
+    }
+    const {
+      lat: latitude,
+      lon: longitude,
+      current: {
+        dt: date,
+        temp,
+        feels_like, /* eslint-disable-line */
+        humidity,
+        wind_speed, /* eslint-disable-line */
+        weather: [
           {
-            date,
-            temp,
-            feels_like,
-            humidity,
-            wind_speed,
             description,
             icon,
           },
-          forecast: daily,
-        };
-        return this.weather;
-      }
-    } catch (error) {
-      /* eslint no-console: ["error", { allow: ["warn"] }] */
-      console.warn(error.message);
-      return false;
-    }
+        ],
+      },
+      daily,
+    } = await request.json();
+    this.weather = {
+      geolocation: { latitude, longitude },
+      todayWeather:
+      {
+        date,
+        temp,
+        feels_like,
+        humidity,
+        wind_speed,
+        description,
+        icon,
+      },
+      forecast: daily,
+    };
+    return this.weather;
   }
 }
 
