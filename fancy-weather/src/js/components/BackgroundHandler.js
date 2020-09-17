@@ -7,6 +7,11 @@ const REQUEST_URL = `https://api.unsplash.com/photos/random?orientation=landscap
 
 async function getImageURL() {
   const response = await fetch(REQUEST_URL);
+  if (!response.ok) {
+    const { errors } = await response.json();
+    /* eslint no-console: ["error", { allow: ["warn"] }] */
+    console.warn(`Bad response from Unsplash server. Default background image set. Server reply: ${errors}`);
+  }
   const { urls: { regular } } = await response.json();
   return regular;
 }
