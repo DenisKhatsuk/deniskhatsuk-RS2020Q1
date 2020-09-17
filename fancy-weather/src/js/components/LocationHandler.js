@@ -18,7 +18,7 @@
 
 import Date from './DateHandler';
 
-const API_KEY = '9a5f3199e9ff19';
+const API_KEY = '9a5f3199e9ff199';
 
 class LocationHandler {
   constructor() {
@@ -42,18 +42,14 @@ class LocationHandler {
   }
 
   static async getLocation(REQUEST_URL) {
-    try {
-      const response = await fetch(REQUEST_URL);
-      if (!response.ok) {
-        throw new Error('Bad response from server. Location detection failed');
-      } else {
-        return response.json();
-      }
-    } catch (error) {
+    const response = await fetch(REQUEST_URL);
+    if (!response.ok) {
+      const { error: { title } } = await response.json();
       /* eslint no-console: ["error", { allow: ["warn"] }] */
-      console.warn(error.message);
+      console.warn(`Bad response from location detection server. Previously detected or default location set. Server reply: "${title}"`);
       return false;
     }
+    return response.json();
   }
 
   static setLocationData(fields, locationDataLink) {
@@ -81,8 +77,10 @@ class LocationHandler {
       loc,
       timezone,
     } = await LocationHandler.getLocation(this.REQUEST_URL);
-    LocationHandler.setLocationData([city, country, loc, timezone], this.locationData);
-    LocationHandler.setLocalStorageData([city, country, loc, timezone], this.locationData);
+    if (city && country && loc && timezone) {
+      LocationHandler.setLocationData([city, country, loc, timezone], this.locationData);
+      LocationHandler.setLocalStorageData([city, country, loc, timezone], this.locationData);
+    }
     return this;
   }
 
