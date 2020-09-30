@@ -1,3 +1,20 @@
+// Public methods:
+//  publishControlBlock(parentElement, state)
+//    ** adds control elements inside parentElement selector
+//    * control elements include
+//    *     refresh,
+//    *     language dropdown,
+//    *     units selector.
+//    * state is required to set initial state for units
+//  startControlFunctions()
+//    **  adds functionality to existing controls
+//    **  returns weather data as object
+//    *   state object should include:
+//    *     lat,
+//    *     lng,
+//    *     language,
+//    *     units.
+
 import AddLanguageSelectorHandler from './ButtonDropdown';
 import SetAppBackground from './BackgroundHandler';
 
@@ -34,23 +51,6 @@ class ControlHandler {
     return ControlMarkup;
   }
 
-  publishControlBlock(parentElement = 'body', state) {
-    const parent = document.querySelector(`${parentElement}`);
-    const controlMarkup = ControlHandler.createControlMarkup(state);
-    const controlElement = document.createElement('div');
-    controlElement.classList.add('header__control');
-    controlElement.innerHTML = controlMarkup;
-    parent.append(controlElement);
-    return this;
-  }
-
-  startControlFunctions() {
-    AddLanguageSelectorHandler();
-    ControlHandler.controlRefresh();
-    ControlHandler.controlUnits();
-    return this;
-  }
-
   static controlUnits() {
     const controlGroup = document.querySelector('.control__units');
     controlGroup.addEventListener('click', (event) => {
@@ -67,6 +67,23 @@ class ControlHandler {
       refreshButtonIcon.classList.toggle('rotate');
       SetAppBackground();
     });
+  }
+
+  publishControlBlock(parentElement = 'body', state) {
+    const parent = document.querySelector(`${parentElement}`);
+    const controlMarkup = ControlHandler.createControlMarkup(state);
+    const controlElement = document.createElement('div');
+    controlElement.classList.add('header__control');
+    controlElement.innerHTML = controlMarkup;
+    parent.append(controlElement);
+    return this;
+  }
+
+  startControlFunctions() {
+    AddLanguageSelectorHandler();
+    ControlHandler.controlRefresh();
+    ControlHandler.controlUnits();
+    return this;
   }
 }
 
