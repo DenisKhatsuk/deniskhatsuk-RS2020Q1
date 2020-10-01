@@ -1,8 +1,8 @@
 import '../sass/styles.scss';
 
-import SetAppBackground from './components/BackgroundHandler';
-import Date from './components/DateHandler';
-import MarkupBuilder from './components/MarkupBuilder';
+import setAppBackground from './components/BackgroundHandler';
+import { getCurrentDate } from './components/DateHandler';
+import { buildHeader, buildMain } from './components/MarkupBuilder';
 import ControlHandler from './components/ControlHandler';
 import SearchHandler from './components/SearchHandler';
 import LocationHandler from './components/LocationHandler';
@@ -19,10 +19,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     timer: 0,
   };
 
-  SetAppBackground();
+  setAppBackground();
 
-  MarkupBuilder.buildHeader();
-  MarkupBuilder.buildMain();
+  buildHeader();
+  buildMain();
 
   ControlHandler.publishControlBlock('.header > .container', state);
   ControlHandler.startControlFunctions();
@@ -72,10 +72,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     dateField = document.createElement('div');
     dateField.classList.add('location__date');
     locationElement.append(dateField);
-    dateField.textContent = Date.getCurrentDate(timezone);
+    dateField.textContent = getCurrentDate(timezone);
     clearInterval(state.timer);
     state.timer = setInterval(() => {
-      dateField.textContent = Date.getCurrentDate(timezone);
+      dateField.textContent = getCurrentDate(timezone);
     }, 1000);
 
     MapHandler.init(lat, lng);

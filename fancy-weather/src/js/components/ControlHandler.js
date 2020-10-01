@@ -16,7 +16,7 @@
 //    *     units.
 
 import AddLanguageSelectorHandler from './ButtonDropdown';
-import SetAppBackground from './BackgroundHandler';
+import setAppBackground from './BackgroundHandler';
 
 class ControlHandler {
   static createControlMarkup(state) {
@@ -65,7 +65,7 @@ class ControlHandler {
     const refreshButtonIcon = refreshButton.querySelector('.control__button_icon');
     refreshButton.addEventListener('click', () => {
       refreshButtonIcon.classList.toggle('rotate');
-      SetAppBackground();
+      setAppBackground();
     });
   }
 

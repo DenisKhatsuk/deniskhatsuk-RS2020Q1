@@ -1,4 +1,4 @@
-function getCurrentDate(timezone, language = 'en-GB') {
+export function getCurrentDate(timezone, language = 'en-GB') {
   const DATE = new Date();
   const options = {
     timeZone: timezone,
@@ -7,7 +7,7 @@ function getCurrentDate(timezone, language = 'en-GB') {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit',
+    // second: '2-digit',
   };
   const localDateString = DATE.toLocaleString(language, options);
   const localDateStringArray = localDateString.split(',');
@@ -16,7 +16,7 @@ function getCurrentDate(timezone, language = 'en-GB') {
   return `${weekday} ${day} ${month} ${time}`;
 }
 
-function getShortDate(dateUnix, language = 'en-GB') {
+export function getShortDate(dateUnix, language = 'en-GB') {
   const dateInMs = dateUnix * 1000;
   const DATE = new Date(dateInMs);
   const options = {
@@ -24,8 +24,3 @@ function getShortDate(dateUnix, language = 'en-GB') {
   };
   return DATE.toLocaleString(language, options);
 }
-
-export default {
-  getCurrentDate,
-  getShortDate,
-};

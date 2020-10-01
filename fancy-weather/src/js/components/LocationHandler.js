@@ -16,7 +16,7 @@
 // API used:
 //  https://ipinfo.io/developers
 
-import Date from './DateHandler';
+import { getCurrentDate } from './DateHandler';
 
 const API_KEY = '9a5f3199e9ff19';
 
@@ -88,9 +88,9 @@ class LocationHandler {
     const dateField = document.querySelector(dateContainer);
     const placeField = document.querySelector(locationContainer);
     placeField.textContent = `${this.locationData.city}, ${this.locationData.country}`;
-    dateField.textContent = Date.getCurrentDate(this.locationData.timezone);
+    dateField.textContent = getCurrentDate(this.locationData.timezone);
     setInterval(() => {
-      dateField.textContent = Date.getCurrentDate(this.locationData.timezone);
+      dateField.textContent = getCurrentDate(this.locationData.timezone);
     }, 1000);
   }
 

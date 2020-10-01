@@ -1,4 +1,4 @@
-function buildHeader() {
+export function buildHeader() {
   const header = document.createElement('header');
   header.classList.add('header');
   header.innerHTML = `
@@ -8,7 +8,7 @@ function buildHeader() {
   document.body.append(header);
 }
 
-function buildMain() {
+export function buildMain() {
   const main = document.createElement('main');
   main.classList.add('main');
   main.innerHTML = `
@@ -19,8 +19,3 @@ function buildMain() {
   `;
   document.body.append(main);
 }
-
-export default {
-  buildHeader,
-  buildMain,
-};

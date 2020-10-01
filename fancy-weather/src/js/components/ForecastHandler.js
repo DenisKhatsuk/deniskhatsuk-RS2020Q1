@@ -17,7 +17,7 @@
 // API used:
 //  https://openweathermap.org/api
 
-import Date from './DateHandler';
+import { getShortDate } from './DateHandler';
 
 const API_KEY = '5bc699ca9036e60c3f7d417600991566';
 
@@ -105,7 +105,7 @@ class ForecastHandler {
             },
           ],
         } = dayWeather;
-        const day = Date.getShortDate(dateUnix);
+        const day = getShortDate(dateUnix);
         const temperatureDay = Math.round(tempDay);
         const temperatureNight = Math.round(tempNight);
         const dayStructure = document.createElement('div');
