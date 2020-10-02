@@ -1,6 +1,7 @@
 import '../sass/styles.scss';
 
 import setAppBackground from './components/BackgroundHandler';
+import getLocationGeocoding from './components/GeocodingHandler';
 import { getCurrentDate } from './components/DateHandler';
 import { buildHeader, buildMain } from './components/MarkupBuilder';
 import ControlHandler from './components/ControlHandler';
@@ -8,7 +9,6 @@ import SearchHandler from './components/SearchHandler';
 import LocationHandler from './components/LocationHandler';
 import MapHandler from './components/MapHandler';
 import ForecastHandler from './components/ForecastHandler';
-import GeocodingHandler from './components/GeocodingHandler';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const state = {
@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       lat,
       lng,
       name: timezone,
-    } = await GeocodingHandler.getLocationGeocoding(searchInputValue);
+    } = await getLocationGeocoding(searchInputValue);
     state.lat = lat;
     state.lng = lng;
     placeField.textContent = `${formatted}`;

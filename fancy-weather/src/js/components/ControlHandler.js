@@ -15,7 +15,7 @@
 //    *     language,
 //    *     units.
 
-import AddLanguageSelectorHandler from './ButtonDropdown';
+import startDropdownWork from './ButtonDropdown';
 import setAppBackground from './BackgroundHandler';
 
 class ControlHandler {
@@ -80,7 +80,7 @@ class ControlHandler {
   }
 
   startControlFunctions() {
-    AddLanguageSelectorHandler();
+    startDropdownWork();
     ControlHandler.controlRefresh();
     ControlHandler.controlUnits();
     return this;
