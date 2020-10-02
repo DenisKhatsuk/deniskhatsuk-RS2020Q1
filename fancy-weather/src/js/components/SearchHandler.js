@@ -1,3 +1,7 @@
+// Public methods:
+//  publishSearchField(parentElement)
+//    ** creates search input inside parentElement
+
 class SearchHandler {
   static createSearchMarkup() {
     const searchMarkup = `
