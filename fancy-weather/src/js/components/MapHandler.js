@@ -51,10 +51,11 @@ class MapHandler {
     return this;
   }
 
-  static getCoordinateInDegMinFormat(coord) {
-    const coordinate = Math.floor(coord * 100) / 100;
-    const coordArr = coordinate.toString().split('.');
-    const coordinateFormatted = `${coordArr[0]}°${coordArr[1]}'`;
+  static getCoordinateInDegMinFormat(coordinate) {
+    const minutesInDegree = 60;
+    const degrees = Math.floor(coordinate);
+    const minutes = Math.floor((coordinate - degrees) * minutesInDegree);
+    const coordinateFormatted = `${degrees}°${minutes}'`;
     return coordinateFormatted;
   }
 }
