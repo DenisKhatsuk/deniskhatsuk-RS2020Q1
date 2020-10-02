@@ -17,7 +17,8 @@ export function getCurrentDate(timezone, language = 'en-GB') {
 }
 
 export function getShortDate(dateUnix, language = 'en-GB') {
-  const dateInMs = dateUnix * 1000;
+  const msInSecond = 1000;
+  const dateInMs = dateUnix * msInSecond;
   const DATE = new Date(dateInMs);
   const options = {
     weekday: 'long',
