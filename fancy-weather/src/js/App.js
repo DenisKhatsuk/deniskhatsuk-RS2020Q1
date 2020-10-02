@@ -36,10 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   state.lat = userLat;
   state.lng = userLng;
 
-  MapHandler.addMapContainer('.main__map');
-  MapHandler.init(state.lat, state.lng);
-  MapHandler.addCoordinatesContainer('.main__map');
-  MapHandler.publishCoordinates(state.lat, state.lng);
+  MapHandler.init(state.lat, state.lng, '.main__map');
 
   async function addWeatherToPage() {
     ForecastHandler.publishTodayWeather('.forecast__today');
