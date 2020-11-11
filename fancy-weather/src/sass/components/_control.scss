@@ -9,20 +9,20 @@
   &__button {
     width: 44px;
     height: 44px;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    font-weight: bold;
-    color: $color-text;
-    background: $color-background-light;
     border: none;
     border-radius: 5px;
+    background: $color-background-light;
+    color: $color-text;
     outline: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.7rem;
     cursor: pointer;
 
     &_refresh {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       background: $color-background-light url("../../src/img/control/refresh.svg") no-repeat;
     }
 
@@ -30,10 +30,10 @@
       width: 15px;
       height: 20px;
       background: url("../../src/img/control/spinner.svg") no-repeat;
-      @include transition(all, 1s);
+      transition: all 1s;
 
       &.rotate {
-        @include transform(rotate(360deg));
+        transform: rotate(360deg);
       }
     }
 

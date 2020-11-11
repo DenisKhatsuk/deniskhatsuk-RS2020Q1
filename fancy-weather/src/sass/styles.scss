@@ -1,17 +1,12 @@
 @charset "utf-8";
-
 @import "./abstract/constants";
-@import "./abstract/mixins";
-
 @import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 @import "./base/normalize";
 @import "./base/typography";
-
 @import "./layout/html";
 @import "./layout/body";
 @import "./layout/header";
 @import "./layout/main";
-
 @import "./components/control";
 @import "./components/button-dropdown";
 @import "./components/search";

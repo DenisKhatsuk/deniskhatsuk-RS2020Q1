@@ -1,8 +1,8 @@
 .forecast {
   &__today {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     &_temp {
       width: 55%;
@@ -15,30 +15,30 @@
       width: 40%;
       font-size: 2.2rem;
       font-weight: bold;
-      line-height: 3.7rem;;
+      line-height: 3.7rem;
       text-transform: uppercase;
     }
 
     &_icon {
       width: 200px;
       height: 130px;
-      background-repeat: no-repeat;
-      background-size: cover;
       background-position: 0 -40px;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
 
   &__upcoming {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     padding-top: 20px;
 
     &_day {
       width: 30%;
       font-size: 2.2rem;
-      line-height: 2.7rem;
       font-weight: bold;
+      line-height: 2.7rem;
     }
 
     &_header {
@@ -52,8 +52,8 @@
 
     &_main {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
       div {
         width: 30%;
@@ -62,8 +62,8 @@
 
     &_icon {
       height: 63px;
-      background-repeat: no-repeat;
       background-position: 15px -23px;
+      background-repeat: no-repeat;
     }
 
     &_temp-night {
@@ -118,8 +118,8 @@
 
   .forecast__upcoming {
     padding-top: 0;
-
   }
+
   .forecast__error {
     font-size: 2rem;
   }

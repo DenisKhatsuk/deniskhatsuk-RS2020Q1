@@ -13,16 +13,16 @@
 
   &__map {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     width: 37%;
-    flex-wrap: wrap;
   }
 }
 
 
 @media (max-width: 767px) {
   .main {
-    &__container{
+    &__container {
       flex-wrap: wrap;
     }
 
@@ -33,8 +33,8 @@
 
     &__map {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding-top: 35px;
     }
   }

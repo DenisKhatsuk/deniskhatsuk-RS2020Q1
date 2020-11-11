@@ -2,16 +2,16 @@
   > input,
   > button {
     padding: 13px 15px;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
     color: inherit;
     outline: none;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
   }
 
   &__input {
-    background: $color-background;
     border: 1px solid $color-border;
     border-radius: 5px 0 0 5px;
+    background: $color-background;
 
     &::placeholder {
       color: inherit;
@@ -21,9 +21,9 @@
   &__button {
     position: relative;
     left: -3px;
-    background: $color-background-light;
     border: 1px solid transparent;
     border-radius: 0 5px 5px 0;
+    background: $color-background-light;
     cursor: pointer;
   }
 }

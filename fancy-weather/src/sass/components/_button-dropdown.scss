@@ -5,18 +5,18 @@
   &__button {
     width: 71px;
     height: 44px;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    font-weight: bold;
-    color: $color-text;
-    background-color: $color-background-dark;
     border: none;
+    background-color: $color-background-dark;
+    color: $color-text;
     outline: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.7rem;
     cursor: pointer;
 
     &_current {
-      background: $color-background-light url("../../src/img/control/arrow-down.svg") no-repeat 77% 52%;
       border-radius: 5px;
+      background: $color-background-light url("../../src/img/control/arrow-down.svg") no-repeat 77% 52%;
     }
 
     &_text {
@@ -28,13 +28,14 @@
   &__content {
     position: absolute;
     z-index: 1;
-    height: 0;
     overflow: hidden;
+    height: 0;
     border-radius: 0 0 5px 5px;
-    @include transition(height, 1s);
+    transition: height 1s;
 
     .button-dropdown__button {
       background-color: $color-background-dark;
+
       &_selected,
       &:hover {
         background: $color-background-light;

@@ -2,11 +2,11 @@
   padding: 40px 0;
   color: $color-text;
 
-  &__container{
+  &__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
