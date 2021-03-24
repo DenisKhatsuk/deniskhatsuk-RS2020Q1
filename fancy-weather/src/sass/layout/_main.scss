@@ -1,0 +1,47 @@
+.main {
+  width: 100%;
+  font-size: 3rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__weather {
+    width: 60%;
+  }
+
+  &__map {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 37%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .main {
+    &__container {
+      flex-wrap: wrap;
+    }
+
+    &__weather,
+    &__map {
+      width: 100%;
+    }
+
+    &__map {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 35px;
+    }
+  }
+}
+
+@media (max-width: 515px) {
+  .main__map {
+    justify-content: center;
+  }
+}

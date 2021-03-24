@@ -1,0 +1,164 @@
+.forecast {
+  &__today {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &_temp {
+      width: 55%;
+      font-size: 18rem;
+      font-weight: bold;
+      line-height: 30rem;
+    }
+
+    &_details {
+      width: 40%;
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 3.7rem;
+      text-transform: uppercase;
+    }
+
+    &_icon {
+      width: 200px;
+      height: 130px;
+      background-position: 0 -40px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__upcoming {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    &_day {
+      width: 30%;
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 2.7rem;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        width: 50%;
+      }
+    }
+
+    &_main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div {
+        width: 30%;
+      }
+    }
+
+    &_icon {
+      height: 63px;
+      background-position: 15px -23px;
+      background-repeat: no-repeat;
+    }
+
+    &_temp-night {
+      opacity: 0.5;
+    }
+  }
+
+  &__error {
+    padding-top: 3rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 2.9rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .forecast__upcoming_icon {
+    background-position: 7px -23px;
+  }
+}
+
+@media (max-width: 991px) {
+  .forecast__today_temp {
+    font-size: 14rem;
+  }
+
+  .forecast__today_details {
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+  }
+
+  .forecast__today_icon {
+    width: 160px;
+    height: 102px;
+  }
+
+  .forecast__upcoming_day {
+    width: 30%;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
+  .forecast__upcoming_icon {
+    background-position: -20px -23px;
+  }
+}
+
+@media (max-width: 767px) {
+  .forecast__today_temp {
+    font-size: 19rem;
+  }
+
+  .forecast__upcoming {
+    padding-top: 0;
+  }
+
+  .forecast__error {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 515px) {
+  .forecast__today_temp {
+    font-size: 15rem;
+    line-height: 25rem;
+  }
+
+  .forecast__upcoming {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .forecast__today_temp {
+    width: 100%;
+    line-height: 17rem;
+    text-align: center;
+  }
+
+  .forecast__today_details {
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  .forecast__today_icon {
+    float: left;
+  }
+
+  .forecast__upcoming {
+    justify-content: center;
+  }
+
+  .forecast__upcoming_day {
+    width: 70%;
+    padding-top: 15px;
+  }
+}

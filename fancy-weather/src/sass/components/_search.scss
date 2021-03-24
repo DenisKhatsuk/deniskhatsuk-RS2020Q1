@@ -1,0 +1,40 @@
+.search {
+  > input,
+  > button {
+    padding: 13px 15px;
+    color: inherit;
+    outline: none;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
+
+  &__input {
+    border: 1px solid $color-border;
+    border-radius: 5px 0 0 5px;
+    background: $color-background;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  &__button {
+    position: relative;
+    left: -3px;
+    border: 1px solid transparent;
+    border-radius: 0 5px 5px 0;
+    background: $color-background-light;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 420px) {
+  .search {
+    text-align: center;
+
+    > input,
+    > button {
+      padding: 13px 11px;
+    }
+  }
+}

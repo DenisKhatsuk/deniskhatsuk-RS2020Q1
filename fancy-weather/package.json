@@ -1,0 +1,48 @@
+{
+  "name": "fancy-weather",
+  "version": "1.0.0",
+  "description": "Fancy weather task for RSSchool Q1 2020",
+  "main": "./src/js/App.js",
+  "scripts": {
+    "style": "sass --watch src/sass/style.scss style.css",
+    "lint": "eslint ./src/js",
+    "lint:fix": "eslint ./src/js --fix",
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production",
+    "server": "webpack-dev-server --open"
+  },
+  "author": "Dzianis Khatsuk",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.5.0",
+    "mapbox-gl": "^1.10.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "autoprefixer": "^10.0.2",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "postcss": "^8.1.6",
+    "postcss-loader": "^4.0.4",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-htmlacademy": "^0.1.4",
+    "stylelint-order": "^4.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -1,0 +1,56 @@
+.control {
+  display: flex;
+  justify-content: space-between;
+
+  > * {
+    margin-right: 10px;
+  }
+
+  &__button {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 5px;
+    background: $color-background-light;
+    color: $color-text;
+    outline: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.7rem;
+    cursor: pointer;
+
+    &_refresh {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $color-background-light url("../../src/img/control/refresh.svg") no-repeat;
+    }
+
+    &_icon {
+      width: 15px;
+      height: 20px;
+      background: url("../../src/img/control/spinner.svg") no-repeat;
+      transition: all 1s;
+
+      &.rotate {
+        transform: rotate(360deg);
+      }
+    }
+
+    &_disabled {
+      background: $color-background-dark;
+    }
+  }
+
+  &__group {
+    :first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    :last-child {
+      position: relative;
+      left: -2px;
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}

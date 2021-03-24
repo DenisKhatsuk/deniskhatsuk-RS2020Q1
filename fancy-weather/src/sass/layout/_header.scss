@@ -1,0 +1,25 @@
+.header {
+  padding: 40px 0;
+  color: $color-text;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    &__control,
+    &__search {
+      width: 100%;
+    }
+
+    &__search {
+      padding: 18px 8px 0 0;
+      text-align: right;
+    }
+  }
+}

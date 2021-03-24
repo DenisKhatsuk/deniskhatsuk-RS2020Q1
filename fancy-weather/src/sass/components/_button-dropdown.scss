@@ -1,0 +1,73 @@
+.button-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__button {
+    width: 71px;
+    height: 44px;
+    border: none;
+    background-color: $color-background-dark;
+    color: $color-text;
+    outline: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.7rem;
+    cursor: pointer;
+
+    &_current {
+      border-radius: 5px;
+      background: $color-background-light url("../../src/img/control/arrow-down.svg") no-repeat 77% 52%;
+    }
+
+    &_text {
+      padding: 1px 18px 0 0;
+    }
+  }
+
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    height: 0;
+    border-radius: 0 0 5px 5px;
+    transition: height 1s;
+
+    .button-dropdown__button {
+      background-color: $color-background-dark;
+
+      &_selected,
+      &:hover {
+        background: $color-background-light;
+      }
+    }
+  }
+
+  &.show {
+    .button-dropdown__content {
+      height: 132px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .button-dropdown {
+    width: 66%;
+
+    &__content {
+      width: 72px;
+    }
+  }
+}
+
+@media (max-width: 515px) {
+  .button-dropdown {
+    width: 50%;
+  }
+}
+
+@media (max-width: 420px) {
+  .button-dropdown {
+    width: 40%;
+  }
+}
